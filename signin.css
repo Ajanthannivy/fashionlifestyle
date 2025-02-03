@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #fff;
+    color: #000;
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.logo .circle {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #000;
+    color: #fff;
+    line-height: 50px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 24px;
+    margin: 20px 0 10px;
+}
+
+.benefits {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.benefits div {
+    text-align: center;
+    max-width: 80px;
+}
+
+.benefits img {
+    width: 90px;
+    height: 90px;
+}
+
+form {
+    margin: 20px 0;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #333;
+}
+
+.social-login {
+    display: flex;
+    justify-content: space-around;
+}
+
+.social-login button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.social-login img {
+    width: 60px;
+    height: 60px;
+}

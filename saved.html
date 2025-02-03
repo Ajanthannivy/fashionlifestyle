@@ -1,0 +1,70 @@
+<html>
+<head>
+    <title>No Saved Items</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+        }
+        .container {
+            text-align: center;
+        }
+        .icon {
+            font-size: 40px;
+            color: #000;
+        }
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #000;
+        }
+        .description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+
+    <script>
+        // Load the external HTML file into the header
+        fetch('womennav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading the header:', error));
+    </script>
+    
+    <div class="container">
+        <div class="icon">
+            <i class="fas fa-heart"></i>
+        </div>
+        <div class="title">You have no Saved Items</div>
+        <div class="description">Sign in to sync your Saved Items across all your devices.</div>
+        <button class="button">SIGN IN</button>
+    </div>
+
+    <div id="footer"></div>
+
+    
+    
+</body>
+</html>

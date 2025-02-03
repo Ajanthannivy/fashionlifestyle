@@ -1,0 +1,577 @@
+<html>
+ <head>
+  <title>
+   New In: Men's Clothing &amp; Accessories
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+        }
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        .header p {
+            font-size: 14px;
+            color: #666;
+        }
+        .nav {
+            display: flex;
+            justify-content: center;
+            background-color: #672044;
+            padding: 10px 0;
+        }
+        .nav button {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .nav button.active {
+            background-color: #ffc6c4;
+            color: black;
+        }
+        .filters {
+            display: flex;
+            justify-content: center;
+            background-color: #f5f5f5;
+            padding: 20px 0;
+            flex-wrap: wrap;
+        }
+        .filters select {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            background-color: #f9f9f9;
+      appearance: none;
+      cursor: pointer;
+        }
+
+   
+    .filters select:focus {
+      outline: none;
+      border-color: #672044;
+     
+      box-shadow: 0 0 5px rgba(44, 2, 46, 0.5);
+    }
+    
+    .filters select option {
+      padding: 5px;}
+
+
+        .results {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        .products {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .product {
+            width: 200px;
+            margin: 10px;
+            text-align: center;
+        }
+        .product img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .product p {
+            font-size: 14px;
+            margin: 10px 0;
+        }
+        .product .price {
+            font-weight: bold;
+        }
+        .product .wishlist {
+            font-size: 20px;
+            color: #ccc;
+            cursor: pointer;
+        }
+        .product .wishlist:hover {
+            color: #000;
+        }
+        @media (max-width: 768px) {
+            .nav, .filters {
+                flex-direction: column;
+                align-items: center;
+            }
+            .product {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+/*footer */
+
+        footer {
+background-color: #672044;
+color: white;
+padding: 40px 20px;
+font-family: Arial, sans-serif;
+}
+
+.footer-container {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+max-width: 1200px;
+margin: 0 auto;
+}
+
+.footer-section {
+flex: 1 1 200px;
+margin: 10px;
+}
+
+.footer-section h2 {
+font-size: 18px;
+margin-bottom: 15px;
+color: #ffc6c4;
+}
+
+.footer-section p,
+.footer-section ul {
+font-size: 14px;
+line-height: 1.6;
+}
+
+.footer-section ul {
+list-style: none;
+padding: 0;
+}
+
+.footer-section ul li {
+margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+text-decoration: none;
+color: white;
+transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+color: #ffc6c4;
+}
+
+.footer-section .social-icons a {
+text-decoration: none;
+margin-right: 10px;
+color: white;
+font-size: 18px;
+transition: color 0.3s;
+}
+
+.footer-section .social-icons a:hover {
+color: #ffc6c4;
+}
+
+.footer-section form {
+margin-top: 10px;
+display: flex;
+}
+
+.footer-section form input {
+flex: 1;
+padding: 10px;
+border-radius: 5px 0 0 5px;
+border: none;
+outline: none;
+font-size: 14px;
+}
+
+.footer-section form button {
+padding: 10px 20px;
+border-radius: 0 5px 5px 0;
+border: none;
+background-color: #ffc6c4;
+color: #672044;
+font-size: 14px;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+
+.footer-section form button:hover {
+background-color: #e1a4a2;
+}
+
+.footer-bottom {
+text-align: center;
+margin-top: 20px;
+font-size: 14px;
+}
+
+.footer-bottom p {
+margin: 0;
+}
+
+@media (max-width: 768px) {
+.footer-container {
+flex-direction: column;
+align-items: center;
+text-align: center;
+}
+.footer-section {
+margin-bottom: 20px;
+}
+.footer-section form {
+flex-direction: column;
+}
+.footer-section form input {
+margin-bottom: 10px;
+border-radius: 5px;
+}
+.footer-section form button {
+border-radius: 5px;
+}
+}
+
+
+  </style>
+ </head>
+ <body>
+  <div class="header">
+   <h1>
+    New In: Men's Clothing &amp; Accessories
+   </h1>
+   <p>
+    Looking for something new? Discover emerging trends, the latest clothing for men and ...
+   </p>
+  </div>
+  <div class="nav">
+   <button class="active">
+    NEW IN: TODAY
+   </button>
+   <button>
+    NEW IN: CLOTHING
+   </button>
+   <button>
+    NEW IN: SPORTSWEAR
+   </button>
+   <button>
+    NEW IN: SHOES
+   </button>
+   <button>
+    NEW IN: ACCESSORIES 
+   </button>
+   <button>
+    NEW IN: FACE + BODY
+   </button>
+  </div>
+ 
+  <div class="filters">
+    <select>
+      <option disabled selected>Sort</option>
+      <option>Price: Low to High</option>
+      <option>Price: High to Low</option>
+      <option>Newest Arrivals</option>
+    </select>
+    <select>
+      <option disabled selected>New in Date</option>
+      <option>Last 7 Days</option>
+      <option>Last 30 Days</option>
+    </select>
+    <select>
+      <option disabled selected>Brand</option>
+      <option>Nike</option>
+      <option>Adidas</option>
+      <option>Puma</option>
+    </select>
+    
+    <select>
+      <option disabled selected>Product Type</option>
+      <option>Shoes</option>
+      <option>Clothing</option>
+      <option>Accessories</option>
+    </select>
+    <select>
+      <option disabled selected>Size</option>
+      <option>Small</option>
+      <option>Medium</option>
+      <option>Large</option>
+    </select>
+    <select>
+      <option disabled selected>Colour</option>
+      <option>Black</option>
+      <option>White</option>
+      <option>Red</option>
+    </select>
+    <select>
+      <option disabled selected>Body Fit</option>
+      <option>Regular</option>
+      <option>Slim</option>
+      <option>Relaxed</option>
+    </select>
+    <select>
+      <option disabled selected>Price Range</option>
+      <option>Under 4500</option>
+      <option>5500 - 6500</option>
+      <option>Over 6500</option>
+    </select>
+  </div>
+  <div class="results">
+   1,775 styles found
+  </div>
+  <div class="products">
+   <div class="product">
+    <img alt="Model wearing ASOS DESIGN heavyweight extreme oversize boxy long sleeve t-shirt in black" height="300" 
+    src="img/italian/dress.jpg" width="200"/>
+    <p>
+     NC DESIGN heavyweight extreme oversize boxy 
+    </p>
+    <p class="price">
+     £21.00
+    </p>
+    <i class="far fa-heart wishlist">
+    </i>
+   </div>
+   <div class="product">
+    <img alt="Model wearing NC 4505 boxy cropped quick dry training sweatshirt in grey" height="300"
+    src="img/italian/dress1.jpg" width="200"/>
+    <p>
+    NC 4505 boxy cropped quick dry training sweatshirt in grey
+    </p>
+    <p class="price">
+     £24.00
+    </p>
+    <i class="far fa-heart wishlist">
+    </i>
+   </div>
+   <div class="product">
+    <img alt="Model wearing Weekday Space relaxed fit straight leg jeans in blue wash" height="300" 
+    src="img/italian/dress3.jpg" width="200"/>
+    <p>
+     Weekday Space relaxed fit straight leg jeans in blue wash
+    </p>
+    <p class="price">
+     £59.00
+    </p>
+    <i class="far fa-heart wishlist">
+    </i>
+   </div>
+   <div class="product">
+    <img alt="Saucony Endorphin Speed 4 running trainers in olivine" height="300"
+     src="img/italian/dress4.jpg" width="200"/>
+    <p>
+     Saucony Endorphin Speed 4 running trainers in olivine
+    </p>
+    <p class="price">
+     £180.00
+    </p>
+    <i class="far fa-heart wishlist"></i>
+    </div>
+    <div class="product">
+        <img alt="Model wearing ASOS DESIGN heavyweight extreme oversize boxy long sleeve t-shirt in black" height="300" 
+        src="img/italian/dress5.jpg" width="200"/>
+        <p>
+         NC DESIGN heavyweight extreme oversize boxy long sleeve t-shirt in black
+        </p>
+        <p class="price">
+         £21.00
+        </p>
+        <i class="far fa-heart wishlist">
+        </i>
+       </div>
+       <div class="product">
+        <img alt="Model wearing NC 4505 boxy cropped quick dry training sweatshirt in grey" height="300"
+         src="img/italian/dress7.jpg" width="200"/>
+        <p>
+        NC 4505 boxy cropped quick dry training sweatshirt in grey
+        </p>
+        <p class="price">
+         £24.00
+        </p>
+        <i class="far fa-heart wishlist">
+        </i>
+       </div>
+       <div class="product">
+        <img alt="Model wearing Weekday Space relaxed fit straight leg jeans in blue wash" height="300" 
+        src="img/italian/dress8.jpg" width="200"/>
+        <p>
+         Weekday Space relaxed fit straight leg jeans in blue wash
+        </p>
+        <p class="price">
+         £59.00
+        </p>
+        <i class="far fa-heart wishlist">
+        </i>
+       </div>
+       <div class="product">
+        <img alt="Saucony Endorphin Speed 4 running trainers in olivine" height="300"
+         src="img/italian/dress9.jpg" width="200"/>
+        <p>
+         Saucony Endorphin Speed 4 running trainers in olivine
+        </p>
+        <p class="price">
+         £180.00
+        </p>
+        <i class="far fa-heart wishlist"></i>
+        </div>
+
+        <div class="product">
+            <img alt="Saucony Endorphin Speed 4 running trainers in olivine" height="300"
+             src="img/italian/italiandress.jpg" width="200"/>
+            <p>
+             Saucony Endorphin Speed 4 running trainers in olivine
+            </p>
+            <p class="price">
+             £180.00
+            </p>
+            <i class="far fa-heart wishlist"></i>
+            </div>
+            <div class="product">
+                <img alt="Saucony Endorphin Speed 4 running trainers in olivine" height="300"
+                 src="img/italian/italiandress1.jpg" width="200"/>
+                <p>
+                 Saucony Endorphin Speed 4 running trainers in olivine
+                </p>
+                <p class="price">
+                 £180.00
+                </p>
+                <i class="far fa-heart wishlist"></i>
+                </div>
+       
+                <div class="product">
+                    <img alt="Saucony Endorphin Speed 4 running trainers in olivine" height="300"
+                     src="img/italian/italiandress2.jpg" width="200"/>
+                    <p>
+                     Saucony Endorphin Speed 4 running trainers in olivine
+                    </p>
+                    <p class="price">
+                     £180.00
+                    </p>
+                    <i class="far fa-heart wishlist"></i>
+                    </div>
+                    <div class="product">
+                        <img alt="Saucony Endorphin Speed 4 running trainers in olivine" height="300"
+                         src="img/italian/italiandress3.jpg" width="200"/>
+                        <p>
+                         Saucony Endorphin Speed 4 running trainers in olivine
+                        </p>
+                        <p class="price">
+                         £180.00
+                        </p>
+                        <i class="far fa-heart wishlist"></i>
+                        </div>
+       
+                        <div class="product">
+                            <img alt="Saucony Endorphin Speed 4 running trainers in olivine" height="300"
+                             src="img/italian/italiandress4.jpg" width="200"/>
+                            <p>
+                             Saucony Endorphin Speed 4 running trainers in olivine
+                            </p>
+                            <p class="price">
+                             £180.00
+                            </p>
+                            <i class="far fa-heart wishlist"></i>
+                            </div>
+                            <div class="product">
+                                <img alt="Saucony Endorphin Speed 4 running trainers in olivine" height="300"
+                                 src="img/italian/italiandress5.jpg" width="200"/>
+                                <p>
+                                 Saucony Endorphin Speed 4 running trainers in olivine
+                                </p>
+                                <p class="price">
+                                 £180.00
+                                </p>
+                                <i class="far fa-heart wishlist"></i>
+                                </div>
+       
+                                <div class="product">
+                                    <img alt="Saucony Endorphin Speed 4 running trainers in olivine" height="300"
+                                     src="img/italian/italiandress6.jpg" width="200"/>
+                                    <p>
+                                     Saucony Endorphin Speed 4 running trainers in olivine
+                                    </p>
+                                    <p class="price">
+                                     £180.00
+                                    </p>
+                                    <i class="far fa-heart wishlist"></i>
+                                    </div>
+                                    <div class="product">
+                                        <img alt="Saucony Endorphin Speed 4 running trainers in olivine" height="300"
+                                         src="img/italian/italiandress7.jpg" width="200"/>
+                                        <p>
+                                         Saucony Endorphin Speed 4 running trainers in olivine
+                                        </p>
+                                        <p class="price">
+                                         £180.00
+                                        </p>
+                                        <i class="far fa-heart wishlist"></i>
+                                        </div>
+                                        
+      
+       
+                                                       
+  </div>
+
+
+  <footer>
+    <div class="footer-container">
+        <div class="footer-section about">
+            <h2>About Us</h2>
+            <p>
+                NC Fashion is your one-stop destination for the latest trends in fashion. Discover a curated collection of clothing, accessories, and more to elevate your style.
+            </p>
+        </div>
+        <div class="footer-section links">
+            <h2>Quick Links</h2>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop Women</a></li>
+                <li><a href="#">Shop Men</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">FAQs</a></li>
+            </ul>
+        </div>
+        <div class="footer-section contact">
+            <h2>Contact Us</h2>
+            <p><i class="fas fa-map-marker-alt"></i> 123 Fashion Street, Style City</p>
+            <p><i class="fas fa-phone-alt"></i> +1 (123) 456-7890</p>
+            <p><i class="fas fa-envelope"></i> support@ncfashion.com</p>
+        </div>
+        <div class="footer-section newsletter">
+            <h2>Stay Connected</h2>
+            <p>Subscribe to our newsletter to get the latest updates and offers.</p>
+            <form>
+                <input type="email" placeholder="Enter your email" required />
+                <button type="submit">Subscribe</button>
+            </form>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 NC Fashion. All rights reserved. Designed with ❤️ by NC Team.</p>
+    </div>
+</footer>
+
+
+
+
+ </body>
+</html>

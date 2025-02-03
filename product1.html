@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Page</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        
+        :root {
+  --color-light-pink:#964734 ;
+  --color-pink:#afdde5;
+  --color-dark-pink: #0fa4af;
+  --color-deep-purple: #024950;
+  --color-black:  #000000;
+  --color-white: #ffffff;
+  --color-border: #eee;
+  --color-grey: #2e3944;
+}
+
+        /* Your existing styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: var(--color-pink);
+        }
+        .container {
+            display: flex;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+        .image-section {
+            flex: 1;
+            text-align: center;
+        }
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+        }
+        .image-pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .image-pagination i {
+            margin: 0 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .image-pagination .active {
+            color: #4CAF50;
+        }
+        .details-section {
+            flex: 1;
+            padding: 20px;
+        }
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .title {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: var(--color-deep-purple);
+    }
+
+   
+
+    .dis{
+      font-size: 1rem;
+      color: var(--color-black);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            margin-left: 10px;
+        }
+      
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .rating i {
+            color: #FFD700;
+        }
+        .reviews {
+            margin-left: 10px;
+            color: #999;
+        }
+        .colors, .sizes {
+            margin-top: 20px;
+        }
+        .colors span {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            margin-right: 10px;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        .sizes span {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .stock {
+            margin-top: 20px;
+            color: #999;
+        }
+        .quantity {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .quantity input {
+            width: 40px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin: 0 10px;
+        }
+        .add-to-bag {
+            display: block;
+            width: 100%;
+            padding: 10px 15px;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .add-to-bag {
+            background-color: #ffffff;
+            border: 2px solid #000;
+            color: #000;
+        }
+        .add-to-bag:hover {
+            background-color: var(--color-dark-pink);
+            color: #fff;
+        }
+        
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .actions a {
+            text-decoration: none;
+            color: #000;
+            display: flex;
+            align-items: center;
+        }
+        .actions a i {
+            margin-right: 5px;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .image-section, .details-section {
+                width: 100%;
+            }
+        }
+
+
+
+
+
+
+        .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 50%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#popup-iframe {
+    width: 100%;
+    height: 500px;
+    border: none;
+}
+
+.thumbnail-images {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .thumbnail-images img {
+      width: 80px;
+      height: 100px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 5px;
+      transition: border 0.3s ease;
+    }
+
+    .thumbnail-images img:hover,
+    .thumbnail-images img.active {
+      border: 2px solid #e63946; /* Highlight active or hovered thumbnail */
+    }
+
+
+    .size-selector {
+      margin-bottom: 20px;
+    }
+
+    .size-selector label {
+      font-size: 1rem;
+      color: #333;
+      margin-right: 10px;
+    }
+
+    .size-selector select {
+      padding: 5px 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .quantity-selector {
+      margin-bottom: 20px;
+    }
+
+    .quantity-selector label {
+      font-size: 1rem;
+      color: #333;
+      margin-right: 10px;
+    }
+
+    .quantity-selector input {
+      width: 60px;
+      padding: 5px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    
+
+ </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-section">
+            <!-- Main image display -->
+            <img id="main-image" src="img/m5.webp" alt="Product Image" />
+            
+          
+
+            <div class="thumbnail-images">
+                <img src="img/m1.webp" alt="Thumbnail 1" onclick="changeImage('img/m2.webp', this)">
+                <img src="img/m2.webp" alt="Thumbnail 2" onclick="changeImage('img/m3.webp', this)">
+                <img src="img/m3.webp" alt="Thumbnail 3" onclick="changeImage('img/m4.webp', this)">
+                <img src="img/m4.webp" alt="Thumbnail 3" onclick="changeImage('img/m5.webp', this)">
+              </div>
+        </div>
+        <div class="details-section">
+            <div class="price">
+                <h1 class="title">Stylish Women's Dress</h1>
+                $45.00
+                <span class="original-price">$62.00</span>
+                
+                <p class="dis">Elevate your wardrobe with this elegant and versatile dress.
+                    Perfect for casual outings or formal events, it features a sleek design and comfortable fabric.</p>
+            </div>
+
+          
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+                
+                <button class="give-reviews" onclick="openPopup()">Give reviews</button>
+            </div>
+            <div class="popup-overlay" id="popup">
+                <div class="popup-content">
+                    <button class="close-popup" onclick="closePopup()">×</button>
+                    <iframe id="popup-iframe" src=""></iframe>
+                </div>
+            </div>
+            <div class="colors">
+                <span class="color1" onclick="changeImage(0)" style="background-color: #50c592;"></span>
+                <span class="color2" onclick="changeImage(1)" style="background-color: #16073b;"></span>
+                <span class="color3" onclick="changeImage(2)" style="background-color: #859c04;"></span>
+                <span class="color4" onclick="changeImage(3)" style="background-color: #FFFF00;"></span>
+            </div>
+            <div class="size-selector">
+                <label for="size">Select Size:</label>
+                <select id="size">
+                  <option value="S">Small (S)</option>
+                  <option value="M">Medium (M)</option>
+                  <option value="L">Large (L)</option>
+                  <option value="XL">Extra Large (XL)</option>
+                </select>
+              </div>
+            
+              <div class="quantity-selector">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1">
+              </div>
+
+            <button class="add-to-bag" onclick="addToBag()">Add to Bag</button>
+            <a href="mybag1.html" class="add-to-bag">View Bag</a>
+            <button class="add-to-bag">Buy Now</button>
+            <div class="actions">
+                <a href="#"><i class="fas fa-heart"></i>Add to Wishlist</a>
+                <div class="share-buttons">
+                               <button onclick="copyToClipboard()">
+                        <i class="fas fa-link"></i> Copy Link
+                    </button>
+                </div>
+                
+            
+        </div>
+    </div>
+    <script>
+        const images = [
+            'img/m1.webp',
+            'img/m2.webp',
+            'img/m3.webp',
+            'img/m4.webp'
+           
+            
+        ];
+
+        let selectedImage = images[0]; // Default image
+
+        function changeImage(index) {
+            selectedImage = images[index]; // Update the selected image
+            document.getElementById('main-image').src = selectedImage;
+            const paginationDots = document.querySelectorAll('.image-pagination i');
+            paginationDots.forEach((dot, i) => {
+                dot.classList.remove('fas');
+                dot.classList.add('far');
+                if (i === index) {
+                    dot.classList.add('fas');
+                    dot.classList.remove('far');
+                }
+            });
+        }
+
+        function addToBag() {
+            const quantity = document.getElementById('quantity').value;
+            const product = {
+                description: "Product 1",
+                price: 45.00,
+                image: selectedImage, // Use the selected image
+                quantity: quantity
+            };
+
+            // Get existing items in localStorage
+            let bagItems = JSON.parse(localStorage.getItem('bagItems')) || [];
+            bagItems.push(product);
+
+            // Save updated items in localStorage
+            localStorage.setItem('bagItems', JSON.stringify(bagItems));
+            alert(`${quantity} item(s) added to the bag.`);
+        }
+
+        function openPopup() {
+    document.getElementById('popup').style.display = 'flex'; // Show the popup
+    document.getElementById('popup-iframe').src = 'feedback.html'; // Load the review page
+}
+
+function closePopup() {
+    document.getElementById('popup').style.display = 'none'; // Hide the popup
+    document.getElementById('popup-iframe').src = ''; // Reset the iframe
+}
+
+
+function copyToClipboard() {
+        const link = "YOUR_PRODUCT_URL";
+        navigator.clipboard.writeText(link).then(() => {
+            alert("Link copied to clipboard!");
+        }).catch(err => {
+            console.error("Failed to copy: ", err);
+        });
+    }
+
+    </script>
+</body>
+</html>

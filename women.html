@@ -1,0 +1,418 @@
+<html>
+<head>
+    <title>NC FASHION </title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   
+</head>
+<style>
+:root {
+  --color-light-pink: #afdde5;
+  --color-pink: #964734;
+  --color-dark-pink: #0fa4af;
+  --color-deep-purple: #024950;
+  --color-black:  #000000;
+  --color-white: #ffffff;
+  --color-border: #eee;
+}
+
+.hero1 {
+  width: 100%;
+  height: 100vh;
+  transition: background-image 1s ease-in-out; /* Smooth transition */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  color: var(--color-white);
+  text-shadow: 1px 1px 2px var(--color-black);
+}
+h1 {
+  margin-bottom: 20px;
+  font-size: 3em;
+  text-align: center;
+}
+.hero1 button {
+  background-color: var(--color-light-pink);
+  color: var(--color-deep-purple);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.hero1 button:hover {
+  background-color: var(--color-pink);
+}
+
+/* Back-to-Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--color-deep-purple);
+  color: var(--color-white);
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  font-size: 18px;
+}
+.back-to-top:hover {
+  background-color: var(--color-light-pink);
+  color: var(--color-deep-purple);
+}
+
+    /*image change*/
+.change{
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+
+.change h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+.carousel-container {
+  position: relative;
+  width: 80%;
+  max-width: 1200px;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  will-change: transform;
+}
+
+.carousel-item {
+  flex: 0 0 25%;
+  padding: 10px;
+  text-align: center;
+}
+
+.carousel-item img {
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.carousel-item img:hover {
+  transform: scale(1.05);
+}
+
+.carousel-item .details {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  z-index: 1;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.arrow:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.left-arrow {
+  left: 15px;
+}
+
+.right-arrow {
+  right: 15px;
+}
+
+/*banner2*/
+.section-p1{
+  padding: 40px 80px;
+}
+#nc-banner{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  
+  }
+  
+  #nc-banner .banner-box{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-start;
+  background-image:url("img/bannerg1.jpg");
+  min-width:580px;
+  height:50vh;
+  background-size:cover;
+  background-position:center;
+  padding:30px;
+  margin-bottom:20px;
+  }
+
+  #nc-banner .banner-box2{
+    background-image:url("img/bannerg2.avif"); 
+  }
+  #nc-banner h4{
+    color:var(--color-white);
+    font-size:20px;
+    font-weight:300;
+  } 
+  #nc-banner h2{
+    color:var(--color-white);
+    font-size:28px;
+    font-weight:800;
+  } 
+  #nc-banner span{
+    color:var(--color-white);
+    font-size:14px;
+    font-weight:500;
+    padding-bottom:15px ;
+  } 
+  button.white{
+    font-size:13px;
+    font-weight: 600;
+    padding: 11px 18px;
+    color: var(--color-white);
+    background-color: transparent;
+    cursor:pointer;
+    border: 1px solid var(--color-white);
+    outline: none;
+    transition: 0.2s;
+  }
+
+  #nc-banner .banner-box:hover button{
+    background-color: var(--color-dark-pink);
+    border: 1px solid var(--color-dark-pink);
+
+  }
+/*banner3*/
+#banner3{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  padding:0 80px;
+  }
+  
+  
+  #banner3 .banner-box{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-start;
+  background-image:url("imgs/a1.webp");
+  min-width:30%;
+  height:30vh;
+  background-size:cover;
+  background-position:center;
+  padding:20px;
+  margin-bottom:20px;
+  }
+
+    
+  #banner3 .banner-box2{
+    background-image:url("imgs/ac7.webp");
+  }
+  
+  #banner3 .banner-box3{
+    background-image:url("img/acc4.avif");
+  }
+  
+  #banner3 h2{
+  color:var(--color-white);
+  font-size:22px;
+  font-weight:900;
+  }
+  
+  #banner3 h3{
+  color:var(--color-white);
+  font-size:15px;
+  font-weight:800;
+  }
+  
+
+</style>
+<body>
+
+    <div id="header"></div>
+
+    <script>
+        
+        fetch('womennav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading the header:', error));
+    </script>
+    
+    <div class="hero1">
+    
+    <h1>Welcome to Our Website</h1>
+</div>
+<script>
+    const heroSection = document.querySelector('.hero1');
+    const backgrounds = [
+      
+        'img/img1.jpg',
+        'img/man.jpg',
+        'img/women.jpg',
+        'img/man.jpg'
+    ];
+    let index = 0;
+
+   
+    function updateBackground() {
+        heroSection.style.backgroundImage = `url("${backgrounds[index]}")`;
+    }
+
+    
+    function nextBackground() {
+        index = (index + 1) % backgrounds.length;
+        updateBackground();
+    }
+
+   
+    setInterval(nextBackground, 3000);
+
+   
+    updateBackground();
+</script>
+
+<section class="change">
+
+    <div class="carousel-container">
+     
+        <button class="arrow left-arrow" onclick="scrollCarousel(-1)">&#10094;</button>
+      
+        <div class="carousel">
+          <div class="carousel-item">
+            <a href="product.html" target="_blank">
+              <img src="img/sh6.jpg" alt="img-1">
+            </a>
+            <div class="details">Image 1 - Description or Price</div>
+          </div>
+          <div class="carousel-item">
+            <a href="product.html" target="_blank">
+              <img src="img/b4.jpg" alt="img-2">
+            </a>
+            <div class="details">Image 2 - Description or Price</div>
+          </div>
+          <div class="carousel-item">
+            <a href="product.html" target="_blank">
+              <img src="img/acc6.avif" alt="img-3">
+            </a>
+            <div class="details">Image 3 - Description or Price</div>
+          </div>
+          <div class="carousel-item">
+            <a href="iemswipper.html" target="_blank">
+              <img src="img/ja7.avif" alt="img-4">
+            </a>
+            <div class="details">Image 4 - Description or Price</div>
+          </div>
+          <div class="carousel-item">
+            <a href="product.html" target="_blank">
+              <img src="img/ja13.avif" alt="img-5">
+            </a>
+            <div class="details">Image 5 - Description or Price</div>
+          </div>
+          <div class="carousel-item">
+            <a href="product.html" target="_blank">
+              <img src="images/img2.jpg" alt="img-6">
+            </a>
+            <div class="details">Image 6 - Description or Price</div>
+          </div>
+        </div>
+        <button class="arrow right-arrow" onclick="scrollCarousel(1)">&#10095;</button>
+      </div>
+    </section>
+    
+      <script>
+        const carousel = document.querySelector('.carousel');
+        let scrollAmount = 0;
+    
+        function scrollCarousel(direction) {
+          const itemWidth = document.querySelector('.carousel-item').offsetWidth;
+          const containerWidth = document.querySelector('.carousel-container').offsetWidth;
+          const maxScroll = carousel.scrollWidth - containerWidth;
+    
+          scrollAmount += direction * itemWidth;
+    
+          if (scrollAmount < 0) scrollAmount = 0;
+          if (scrollAmount > maxScroll) scrollAmount = maxScroll;
+    
+          carousel.style.transform = `translateX(-${scrollAmount}px)`;
+        }
+      </script>
+
+<section id="nc-banner" class="section-p1">
+    <div class="banner-box">
+    <h4>crazy deals</h4>
+    <h2>buy 1 get 1 free</h2>
+    <span>The best classic dress is on sale at NC</span>
+    <button class="white ">learn more</button>
+    </div>
+
+    <div class="banner-box banner-box2" >
+        <h4>Beach Clothes </h4>
+        <h2>upcomming season</h2>
+        <span>The best classic dress is on sale at NC</span>
+        <button class="white ">collection</button>
+        </div>
+ </section>
+
+<section id="banner3">
+    <div class="banner-box ">
+    <h2>hi nivy</h2>
+    <h3>jihhhjvfgsesdfcghvhj</h3>
+    </div>
+    <div class="banner-box banner-box2 ">
+        <h2>hi nivy</h2>
+        <h3>jihhhjvfgsesdfcghvhj</h3>
+    </div>
+    <div class="banner-box banner-box3 ">
+            <h2>hi nivy</h2>
+            <h3>jihhhjvfgsesdfcghvhj</h3>
+       </div>    
+ </section>
+
+
+
+
+
+
+
+<div id="footer"></div>
+
+<script>
+    
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading the footer:', error));
+</script>

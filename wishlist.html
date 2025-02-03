@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+<body>
+
+    <h1>My Wishlist</h1>
+    <div class="wishlist-container"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const wishlistContainer = document.querySelector(".wishlist-container");
+            const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+            if (wishlist.length === 0) {
+                wishlistContainer.innerHTML = "<p>No items in wishlist.</p>";
+            } else {
+                wishlistContainer.innerHTML = wishlist.map(item => `
+                    <div class="product">
+                        <img src="${item.img}" width="200" height="300" alt="${item.name}">
+                        <p>${item.name}</p>
+                        <p class="price">${item.price}</p>
+                        <button class="remove" data-name="${item.name}">Remove</button>
+                    </div>
+                `).join('');
+            }
+
+            // Remove Wishlist Item
+            document.querySelectorAll(".remove").forEach(button => {
+                button.addEventListener("click", function() {
+                    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+                    wishlist = wishlist.filter(item => item.name !== this.dataset.name);
+                    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+                    location.reload(); // Reload Wishlist Page
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

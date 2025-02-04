@@ -164,7 +164,7 @@ h1 {
   flex-direction:column;
   justify-content:center;
   align-items:flex-start;
-  background-image:url("img/man.jpg");
+  background-image:url("/img/man.jpg");
   min-width:580px;
   height:50vh;
   background-size:cover;
@@ -174,7 +174,7 @@ h1 {
   }
 
   #nc-banner .banner-box2{
-    background-image:url("img/men2.avif"); 
+    background-image:url("/img/men2.avif"); 
   }
   #nc-banner h4{
     color:var(--color-white);
@@ -223,7 +223,7 @@ h1 {
   flex-direction:column;
   justify-content:center;
   align-items:flex-start;
-  background-image:url("img/t1.jpg");
+  background-image:url("/img/men/clothes/cs20.jpg");
   min-width:30%;
   height:30vh;
   background-size:cover;
@@ -234,11 +234,11 @@ h1 {
 
     
   #banner3 .banner-box2{
-    background-image:url("img/t10.jpg");
+    background-image:url("/img/men/clothes/j4.avif");
   }
   
   #banner3 .banner-box3{
-    background-image:url("img/t5.jpg");
+    background-image:url("/img/men/clothes/s5.jpg");
   }
   
   #banner3 h2{
@@ -261,7 +261,7 @@ h1 {
 
     <script>
         
-        fetch('mennav.html')
+        fetch('/frontendmen/mennav.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header').innerHTML = data;
@@ -276,10 +276,10 @@ h1 {
 <script>
     const heroSection = document.querySelector('.hero1');
     const backgrounds = [
-    'img/men1.jpg',
-            'img/men3.avif',
-            'img/men2.avif',
-            'img/t1.jpg'
+    '/img/men1.jpg',
+            '/img/men3.avif',
+            '/img/men2.avif',
+            '/img/t1.jpg'
     ];
     let index = 0;
 
@@ -408,7 +408,7 @@ h1 {
 
 <script>
     
-    fetch('footer.html')
+    fetch('/frontend/footer.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('footer').innerHTML = data;

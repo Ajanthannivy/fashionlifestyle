@@ -164,7 +164,7 @@ h1 {
   flex-direction:column;
   justify-content:center;
   align-items:flex-start;
-  background-image:url("img/bannerg1.jpg");
+  background-image:url("/img/bannerg1.jpg");
   min-width:580px;
   height:50vh;
   background-size:cover;
@@ -174,7 +174,7 @@ h1 {
   }
 
   #nc-banner .banner-box2{
-    background-image:url("img/bannerg2.avif"); 
+    background-image:url("/img/bannerg2.avif"); 
   }
   #nc-banner h4{
     color:var(--color-white);
@@ -223,7 +223,7 @@ h1 {
   flex-direction:column;
   justify-content:center;
   align-items:flex-start;
-  background-image:url("imgs/a1.webp");
+  background-image:url("/img/women/activewear/a1.webp");
   min-width:30%;
   height:30vh;
   background-size:cover;
@@ -234,11 +234,11 @@ h1 {
 
     
   #banner3 .banner-box2{
-    background-image:url("imgs/ac7.webp");
+    background-image:url("/img/women/activewear/acc7.avif");
   }
   
   #banner3 .banner-box3{
-    background-image:url("img/acc4.avif");
+    background-image:url("/img/women/activewear/acc4.avif");
   }
   
   #banner3 h2{
@@ -261,7 +261,7 @@ h1 {
 
     <script>
         
-        fetch('frontendwomen/womennav.html')
+        fetch('/frontendwomen/womennav.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header').innerHTML = data;
@@ -277,10 +277,10 @@ h1 {
     const heroSection = document.querySelector('.hero1');
     const backgrounds = [
       
-        'img/img1.jpg',
-        'img/man.jpg',
-        'img/women.jpg',
-        'img/man.jpg'
+        '/img/img1.jpg',
+        '/img/man.jpg',
+        '/img/women.jpg',
+        '/img/man.jpg'
     ];
     let index = 0;
 

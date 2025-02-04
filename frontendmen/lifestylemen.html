@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanLifestyle | Modern Living</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/lifestyle.css">
+</head>
+<body>
+    <div id="header"></div>
+    <script>
+       
+        fetch('womennav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading the header:', error));
+    </script>
+
+    <!-- Hero Section -->
+    <section class="lifestyle-hero" id="home">
+        <div class="hero-content">
+            <h1>Live Your Best Life</h1>
+            <p>Discover modern lifestyle tips for health, travel, and personal growth</p>
+        </div>
+    </section>
+
+    <!-- Lifestyle Categories -->
+    <section class="categories" id="health">
+        <h2 class="section-title">Lifestyle Categories</h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Healthy Living">
+                <div class="category-info">
+                    <h3>Healthy Living</h3>
+                    <p>Nutrition, fitness, and wellness tips</p>
+                </div>
+            </div>
+            <!-- Add more category cards -->
+        </div>
+    </section>
+
+
+    <div class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <script>
+        // Back-to-Top Button Logic
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+    <!-- Featured Articles -->
+    <section class="articles" id="travel">
+        <h2 class="section-title">Featured Articles</h2>
+        <div class="article-grid">
+            <div class="article-card">
+                <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80')"></div>
+                <div class="article-content">
+                    <h3>Top Travel Destinations for 2023</h3>
+                    <p>Discover the most exciting travel locations for your next adventure...</p>
+                    <a href="https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwjmsvmHnaCLAxWqIYMDHWeWNrkYABABGgJzZg&ae=2&aspm=1&co=1&ase=5&gclid=Cj0KCQiAhvK8BhDfARIsABsPy4gAbL2lDTgRp2cdAHyb6udp0YiE6o6WFcL2kameF3uiQK3Tcxaw4oIaAhUlEALw_wcB&ohost=www.google.com&cid=CAESVeD2IKYfaCDFMTh1yW2vvoI79xER5xT_LQMnlm55LJOjbEA-Jes3DaymmjEpxIT_R9qq0wXZClDst6HcLQodoyHh2Ap8C0w4N92WNNBNaxLLgMHzwLw&sig=AOD64_2Cp2I_7q4cBk3GwCaRuYHHkqY8JQ&q&adurl&ved=2ahUKEwjrgvWHnaCLAxWkzjgGHUUZDMIQ0Qx6BAgKEAE" class="read-more">Read More →</a>
+                </div>
+            </div>
+            <!-- Add more article cards -->
+        </div>
+    </section>
+ 
+    <!-- Newsletter -->
+    <section class="newsletter" id="joinlifestyle">
+        <div class="newsletter-content">
+            <h2>Join Our Lifestyle Community</h2>
+            <p>Get weekly updates on health, travel, and personal growth tips</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Enter your email">
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+   
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Newsletter Submission
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.querySelector('.newsletter-input').value;
+            if(email) {
+                alert('Thanks for subscribing!');
+                this.reset();
+            }
+        });
+
+        // Sticky Navigation
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if(window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(255,255,255,0.95)';
+            } else {
+                navbar.style.backgroundColor = '#ffffff';
+            }
+        });
+
+        // Article Card Animation
+        const articleCards = document.querySelectorAll('.article-card');
+        articleCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

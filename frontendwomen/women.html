@@ -261,7 +261,7 @@ h1 {
 
     <script>
         
-        fetch('womennav.html')
+        fetch('frontendwomen/womennav.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header').innerHTML = data;
@@ -409,7 +409,7 @@ h1 {
 
 <script>
     
-    fetch('footer.html')
+    fetch('/frontend/footer.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('footer').innerHTML = data;

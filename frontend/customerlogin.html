@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Registration</title>
+</head>
+<style>  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #fff;
+    color: #000;
+}
+
+.login-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 10px;
+}
+
+.logo .circle {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #000;
+    color: #fff;
+    line-height: 50px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 24px;
+    margin: 20px 0 10px;
+}
+
+.benefits {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.benefits div {
+    text-align: center;
+    max-width: 80px;
+}
+
+.benefits img {
+    width: 90px;
+    height: 90px;
+}
+
+form {
+    margin: 20px 0;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #333;
+}
+
+.social-login {
+    display: flex;
+    justify-content: space-around;
+}
+
+.social-login button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.social-login img {
+    width: 60px;
+    height: 60px;
+}
+</style>
+    <body>
+        <div class="login-container">
+            <div class="logo">
+                <div class="circle">NC</div>
+            </div>
+            <h1>Hi friend!</h1>
+            <p>Enter your email and password to sign in or join for</p>
+            <div class="benefits">
+                <div>
+                    <img src="discount.png" alt="Exclusive discounts">
+                    <p>Exclusive discounts</p>
+                </div>
+                <div>
+                    <img src="delivery.jpg" alt="Easily tracked deliveries and returns">
+                    <p>Easily tracked deliveries and returns</p>
+                </div>
+                <div>
+                    <img src="card.png" alt="Speedy checkout">
+                    <p>Speedy checkout</p>
+                </div>
+            </div>
+    <h2>Customer Registration</h2>
+    <form action="customerlogin.php" method="POST">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <label for="confirm-password">Confirm Password:</label><br>
+        <input type="password" id="confirm-password" name="confirm-password" required><br><br>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <p>or continue with</p>
+        <div class="social-login">
+            <button><img src="google.jpg" alt="Google"></button>
+            <button><img src="facebook.jpg" alt="Facebook"></button>
+            <button><img src="apple.jpeg" alt="Apple"></button>
+        </div>
+        <a href="forgot_password.php">Forgot Password?</a>
+    </div>
+</body>
+</html>

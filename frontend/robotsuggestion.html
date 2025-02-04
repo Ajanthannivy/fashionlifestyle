@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Robot Stylist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(120deg, #024950, #964734, #0FA4AF, #AFDDE5);
+            background-size: 400% 400%;
+            animation: gradientAnimation 8s ease infinite, flashAnimation 1s ease-in-out infinite;
+            color: #fff;
+            min-height: 80vh;
+        }
+    
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes flashAnimation {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        .robot-container {
+            text-align: center;
+            margin-top: 20px;
+            position: relative;
+        }
+        .robot-container img {
+            width: 200px;
+            height: auto;
+            border-radius: 50%;
+            transition: transform 0.3s, filter 0.3s;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 350px;
+            margin-top: 20px;
+        }
+        .container h1 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .container select, .container button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .container button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="robot-container">
+        <img src="robotic.gif" id="robot-image" alt="AI Robot">
+        <h2>Your Style Assistant</h2>
+    </div>
+
+    <div class="container">
+        <h1>Style Suggestions</h1>
+        <p>Select your preferences:</p>
+        <p>Skin Tone:</p>
+        <select id="skin-tone">
+            <option value="fair">Fair</option>
+            <option value="light">Light</option>
+            <option value="medium">Medium</option>
+            <option value="olive">Olive</option>
+            <option value="dark">Dark</option>
+            <option value="deep">Deep</option>
+        </select>
+        <p>Body Shape:</p>
+        <select id="body-shape">
+            <option value="hourglass">Hourglass</option>
+            <option value="pear">Pear</option>
+            <option value="rectangle">Rectangle</option>
+            <option value="apple">Apple</option>
+            <option value="inverted-triangle">Inverted Triangle</option>
+        </select>
+        <p>Dress Size:</p>
+        <select id="dress-size">
+            <option value="extra-small">Extra Small</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+            <option value="extra-large">Extra Large</option>
+        </select>
+        <button onclick="tellSuggestions()">Tell Me</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function changeRobotExpression(expression) {
+            const robotImg = document.getElementById('robot-image');
+            const expressions = {
+                neutral: "robotic.gif",
+                talking: "robotic.gif",
+                thinking: "robotic.gif"
+            };
+            robotImg.src = expressions[expression];
+        }
+
+        function getSuggestions() {
+            return {
+                fair: "Soft pastels and earthy tones suit you well.",
+                light: "Choose pastel colors for elegance.",
+                medium: "Deep tones like emerald suit you well.",
+                olive: "Earthy greens and warm shades complement your skin.",
+                dark: "Bright yellows and gold are perfect for you.",
+                deep: "Vivid reds and jewel tones enhance your complexion.",
+                hourglass: "Accentuate your waistline with fitted dresses.",
+                pear: "Wear A-line skirts to balance your silhouette.",
+                rectangle: "Layered outfits create curves.",
+                apple: "Empire waist dresses flatter your shape.",
+                "inverted-triangle": "V-necklines and A-line skirts balance proportions.",
+                "extra-small": "Structured outfits enhance your frame.",
+                small: "Try tailored fits for a sharp look.",
+                medium: "Medium fits balance comfort and style.",
+                large: "Go for loose but structured outfits.",
+                "extra-large": "Flowy fabrics provide a stylish and comfortable look."
+            };
+        }
+
+        function speakText(text) {
+            const synth = window.speechSynthesis;
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.onstart = () => changeRobotExpression("talking");
+            utterance.onend = () => changeRobotExpression("neutral");
+            synth.speak(utterance);
+        }
+
+        function tellSuggestions() {
+            const skinTone = document.getElementById('skin-tone').value;
+            const bodyShape = document.getElementById('body-shape').value;
+            const dressSize = document.getElementById('dress-size').value;
+
+            const suggestions = getSuggestions();
+            const message = `For your skin tone (${skinTone}), we recommend: ${suggestions[skinTone]}. \n
+                             Based on your body shape (${bodyShape}), consider: ${suggestions[bodyShape]}. \n
+                             For your dress size (${dressSize}), we suggest: ${suggestions[dressSize]}.`;
+
+            document.getElementById('result').textContent = message;
+
+            changeRobotExpression("thinking");
+            setTimeout(() => speakText(message), 1000);
+        }
+    </script>
+</body>
+</html>

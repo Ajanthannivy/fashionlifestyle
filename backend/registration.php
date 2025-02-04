@@ -1,3 +1,8 @@
+<?php
+// Retrieve email from the query string (if it's set)
+$email = isset($_GET['email']) ? $_GET['email'] : '';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -104,7 +109,7 @@
   <div class="container">
     <!-- Left side image -->
     <div class="image-container">
-      <img src="design.jpg" alt="Welcome Image">
+      <img src="shopping.jpg" alt="Welcome Image">
     </div>
 
     <!-- Right side form -->
@@ -117,6 +122,7 @@
             type="email" 
             id="email" 
             name="email" 
+            value="<?php echo htmlspecialchars($email); ?>" 
             placeholder="Enter your email" 
             required 
             aria-required="true">
@@ -140,17 +146,7 @@
             placeholder="Enter your last name" 
             required 
             aria-required="true">
-    
-        <!-- Password Field -->
-        <label for="password">Password:*</label>
-        <input 
-            type="password" 
-            id="password" 
-            name="password" 
-            placeholder="Must be 10 or more characters" 
-            minlength="10" 
-            required 
-            aria-required="true">
+            
     
         <!-- Date of Birth Field -->
         <label for="dob">Date of Birth:*</label>
@@ -160,8 +156,16 @@
             name="date_of_birth" 
             required 
             aria-required="true">
-        <p class="dob-note">You need to be 16 or over to use this platform.</p>
+       
     
+        Address:*
+     </label>
+     <input id="address" name="address" placeholder="Enter your address" required="" type="text"/>
+     <!-- Postal Code Field -->
+     <label for="postal-code">
+      Postal Code:*
+     </label>
+     <input id="postal-code" name="postal_code" placeholder="Enter your postal code" required="" type="text"/>
         <!-- Interest Field -->
         <label>Mostly Interested In:*</label>
         <div class="radio-group">
@@ -185,8 +189,7 @@
     
         <!-- Submit Button -->
         <button type="submit" class="submit-btn">Join NC Fashion</button>
-    </form>
-    
+      </form>
     </div>
   </div>
 

@@ -257,7 +257,8 @@ background-color: var(--color-deep-purple);
 
 /*offer mixed color&?*/
 .main-banner {
-  background: linear-gradient(to right,#ffc6c4,#e38191 , #ad466c,#672044);
+
+  background: linear-gradient(to right,var(--color-deep-purple),var(--color-deep-purple),var(--color-deep-purple),  var(--color-dark-pink));
   color: var(--color-black);
   text-align: center;
   padding: 50px 20px;
@@ -388,7 +389,7 @@ background-color: var(--color-deep-purple);
   }
   50% {
     transform: scale(1.2) rotate(5deg);
-    background-color: #ffc6c4;
+    background-color:var(--color-dark-pink);
   }
   100% {
     transform: scale(1) rotate(0deg);
@@ -415,7 +416,7 @@ background-color: var(--color-deep-purple);
   flex-direction:column;
   justify-content:center;
   align-items:flex-start;
-  background-image:url("img/banner1.jpg");
+  background-image:url("/img/banner1.jpg");
   min-width:580px;
   height:50vh;
   background-size:cover;
@@ -425,7 +426,7 @@ background-color: var(--color-deep-purple);
   }
 
   #nc-banner .banner-box2{
-    background-image:url("img/banner2.jpg"); 
+    background-image:url("/img/banner2.jpg"); 
   }
   #nc-banner h4{
     color:var(--color-white);
@@ -474,7 +475,7 @@ background-color: var(--color-deep-purple);
   flex-direction:column;
   justify-content:center;
   align-items:flex-start;
-  background-image:url("img/banner3.webp");
+  background-image:url("/img/banner3.webp");
   min-width:30%;
   height:30vh;
   background-size:cover;
@@ -485,11 +486,11 @@ background-color: var(--color-deep-purple);
 
     
   #banner3 .banner-box2{
-    background-image:url("img/banner4.jpg");
+    background-image:url("/img/banner4.jpg");
   }
   
   #banner3 .banner-box3{
-    background-image:url("img/banner5.avif");
+    background-image:url("/img/banner5.avif");
   }
   
   #banner3 h2{
@@ -508,7 +509,8 @@ background-color: var(--color-deep-purple);
 /*footer*/
 
 footer {
-  background-color: var(--color-deep-purple);
+  
+background: linear-gradient(to right,var(--color-deep-purple),var(--color-deep-purple),var(--color-deep-purple),  var(--color-dark-pink));
  color: var(--color-white);
  padding: 40px 20px;
  font-family: Arial, sans-serif;

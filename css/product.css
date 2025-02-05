@@ -124,24 +124,23 @@ body {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Product Image */
 .product img {
     width: 100%;
     border-radius: 5px;
 }
 
-/* Product Text */
 .product p {
     font-size: 14px;
     margin: 10px 0;
 }
 
-/* Product Price */
+
 .product .price {
     font-weight: bold;
 }
 
-/* Wishlist Icon */
+
+
 .product .wishlist {
     font-size: 20px;
     color: var(--color-black);
@@ -163,7 +162,7 @@ body {
     font-size: 24px;
     font-weight: bold;
     text-align: center;
-    color: #333;
+    color: var(--color-black);
     margin-bottom: 20px;
     text-transform: uppercase;
     border-bottom: 2px solid #e63946;

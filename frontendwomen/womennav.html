@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     
-    <link rel="stylesheet" href="/css/wmnav.css">
+    <link rel="stylesheet" href="../css/wmnav.css">
 </head>
 <body>
     <div class="top-bar">
@@ -19,12 +19,40 @@
       </header>
              
         <div class="menu">
-            <a href="women.html">WOMEN</a>
-            <a href="men.html">MEN</a>
+            <a href="../frontendwomen/women.html">WOMEN</a>
+            <a href="../frontendmen/men.html">MEN</a>
         </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Search for items and brands" />
-        </div>
+       
+		
+		<div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search for items and brands">
+    <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+</div>
+<div id="searchResults"></div>
+
+<script>
+function searchProducts() {
+    let query = document.getElementById("searchInput").value;
+    if (query.length > 2) { 
+        fetch("/backend/search.php?query=" + query)
+        .then(response => response.json())
+        .then(data => {
+            let resultsDiv = document.getElementById("searchResults");
+            resultsDiv.innerHTML = "";
+            if (data.length > 0) {
+                data.forEach(product => {
+                    resultsDiv.innerHTML += `<div class="search-item">
+                        <img src="${product.image_url}" alt="${product.name}" width="50">
+                        <span>${product.name} - ${product.category} - $${product.price}</span>
+                    </div>`;
+                });
+            } else {
+                resultsDiv.innerHTML = "<p>No results found</p>";
+            }
+        });
+    }
+}
+</script>
         
         <div class="navbar1">
             
@@ -35,12 +63,12 @@
                     <i class="fas fa-times"></i>
                 </div>
                 <div class="header">
-                    <a href="signin.html">Sign In</a> | <a href="register.html">Join</a>
+                    <a href="../frontend/customerlogin.html">Sign In</a> | <a href="">Join</a>
                 </div>
-                <a href="account.html" class="menu-item">
+                <a href="../frontend/account.html" class="menu-item">
                     <i class="fas fa-user"></i> My Account
                 </a>
-                <a href="#" class="menu-item">
+                <a href="../frontend/cart.html" class="menu-item">
                     <i class="fas fa-calendar-alt"></i> My Orders
                 </a>
                 <a href="#" class="menu-item">
@@ -55,22 +83,22 @@
           </div>
 
           <div class="dropdown">
+
+            
+
+            
+            
             <div class="icon"><i class="fas fa-heart"></i></div>
          
             <div class="dropdown-content">
                
-                <a href="wishlist.html" class="menu-item">
-                    <i class="fas fa-user"></i> Saved product
+                <a href="../frontend/wishlist.html" class="menu-item">
+                    <i class="fas fa-user"></i> Wishlist
                 </a>
-                <a href="#" class="menu-item">
-                    <i class="fas fa-calendar-alt"></i> My Orders
+                <a href="../frontend/cart.html" class="menu-item">
+                    <i class="fas fa-calendar-alt"></i> Cart
                 </a>
-                <a href="#" class="menu-item">
-                    <i class="fas fa-question-circle"></i> Returns Information
-                </a>
-                <a href="#" class="menu-item">
-                    <i class="fas fa-comment-dots"></i> Contact Preferences
-                </a>
+               
                 
 
             </div>
@@ -81,7 +109,7 @@
             <div class="icon"><i class="fas fa-shopping-bag"></i></div>
             <div class="dropdown-content">
              
-                <a href="account.html" class="menu-item">
+                <a href="../frontend/account.html" class="menu-item">
                     <i class="fas fa-user"></i> My Account
                 </a>
                 <a href="#" class="menu-item">
@@ -114,26 +142,26 @@
               <div class="column">
                 <h2>NEW PRODUCTS</h2>
                 <ul>
-                  <li><a href="dress.html">View all</a></li>
-                  <li><a href="denim.html">Clothing</a></li>
-                  <li><a href="trending.html">Trending</a></li>
-                  <li><a href="shoe.html">Shoes</a></li>
+                  <li><a href="">View all</a></li>
+                  <li><a href="">Clothing</a></li>
+                  <li><a href="">Trending</a></li>
+                  <li><a href="">Shoes</a></li>
                   <li><a href="#"><strong>New in: Today</strong></a></li>
-                  <li><a href="tops.html">Tops</a></li>
-                  <li><a href="activewear.html">Activewear</a></li>
-                  <li><a href="coat.html">Coats </a></li>
-                  <li><a href="sh.html">Face + Body</a></li>
+                  <li><a href="">Tops</a></li>
+                  <li><a href="">Activewear</a></li>
+                  <li><a href="">Coats </a></li>
+                  <li><a href="../frontendwomen/facebody.html">Face + Body</a></li>
                 </ul>
               </div>
               <div class="column">
                 <h2>SHOP WINTER</h2>
                 <ul>
-                  <li><a href="#"><img src="img/acc3.avif" alt="Winter View All" /> View all</a></li>
-                  <li><a href="#"><img src="img/tt2.jpg" alt="Winter View All" /> Bestsellers</a></li>
-                  <li><a href="#"><img src="img/acc2.avif" alt="Winter View All" />  dresses</a></li>
-                  <li><a href="#"><img src="imgs/a11.webp" alt="Winter View All" /> Coats</a></li>
-                  <li><a href="#"><img src="img/acc4.avif" alt="Winter View All" /> Accessories</a></li>
-                  <li><a href="#"><img src="img/ja2.avif" alt="Winter View All" /> Boots</a></li>
+                  <li><a href="#"><img src="../img/acc3.avif" alt="Winter View All" /> View all</a></li>
+                  <li><a href="#"><img src="../img/tt2.jpg" alt="Winter View All" /> Bestsellers</a></li>
+                  <li><a href="#"><img src="../img/acc2.avif" alt="Winter View All" />  dresses</a></li>
+                  <li><a href="#"><img src="../imgs/a11.webp" alt="Winter View All" /> Coats</a></li>
+                  <li><a href="#"><img src="../img/acc4.avif" alt="Winter View All" /> Accessories</a></li>
+                  <li><a href="#"><img src="../img/ja2.avif" alt="Winter View All" /> Boots</a></li>
                 </ul>
               </div>
             </div>
@@ -156,24 +184,24 @@
                 <h2>SHOP BY PRODUCTS</h2>
                 <ul>
                   
-                  <li><a href="/frontendwomen/clothing.html#dress">Dresses</a></li>
-                  <li><a href="/frontendwomen/clothing.html#tshirts">T-Shirts</a></li>
-                  <li><a href="/frontendwomen/clothing.html#coats">Coats</a></li>
-                  <li><a href="/frontendwomen/clothing.html#shorts">Shorts</a></li>
-                  <li><a href="/frontendwomen/clothing.html#shorts">Jeans</a></li>
-                  <li><a href="/frontendwomen/clothing.html#activewear">Activewear</a></li>
+                  <li><a href="../frontendwomen/clothing.html#dress">Dresses</a></li>
+                  <li><a href="../frontendwomen/clothing.html#tshirts">T-Shirts</a></li>
+                  <li><a href="../frontendwomen/clothing.html#coats">Coats</a></li>
+                  <li><a href="../frontendwomen/clothing.html#shorts">Shorts</a></li>
+                  <li><a href="../frontendwomen/clothing.html#shorts">Jeans</a></li>
+                  <li><a href="../frontendwomen/clothing.html#activewear">Activewear</a></li>
                   
                 </ul>
               </div>
               <div class="column">
                 <h2>SHOP BY EDIT</h2>
                 <ul>
-                  <li><a href="/frontendwomen/clothing.html"><img src="/img/women/clothes/cs12.jpg" alt="Wi" />NEWIN</a></li>
-                  <li><a href="/frontendwomen/clothing.html"><img src="/img/women/clothes/d13.webp" alt="Wint" />VIEW</a></li>
-                  <li><a href="/frontendwomen/clothing.html#wedding"><img src="/img/women/clothes/we.jpg" alt="Wi" />WEDDING</a></li>
-                  <li><a href="/frontendwomen/clothing.html#denim"><img src="/img/women/clothes/d2.webp" alt="Wint" />DENIM</a></li>
-                  <li><a href="/frontendwomen/clothing.html#holiday"><img src="/img/women/clothes/ho.jpg" alt="All" />HOLIDAY</a></li>
-                 <li><a href="/frontendwomen/clothing.html#modest"><img src="/img/women/clothes/m1.jpg" alt="View All" />MODEST FASHION </a></li>
+                  <li><a href="../frontendwomen/clothing.html"><img src="../img/women/clothes/cs12.jpg" alt="Wi" />NEWIN</a></li>
+                  <li><a href="../frontendwomen/clothing.html"><img src="../img/women/clothes/d13.webp" alt="Wint" />VIEW</a></li>
+                  <li><a href="../frontendwomen/clothing.html#wedding"><img src="../img/women/clothes/we.jpg" alt="Wi" />WEDDING</a></li>
+                  <li><a href="../frontendwomen/clothing.html#denim"><img src="../img/women/clothes/d2.webp" alt="Wint" />DENIM</a></li>
+                  <li><a href="../frontendwomen/clothing.html#holiday"><img src="../img/women/clothes/ho.jpg" alt="All" />HOLIDAY</a></li>
+                 <li><a href="../frontendwomen/clothing.html#modest"><img src="../img/women/clothes/m1.jpg" alt="View All" />MODEST FASHION </a></li>
                  
                 </ul>
               </div>
@@ -190,21 +218,21 @@
                 <h2>TOP-SEARCHED FAVES</h2>
                 <ul>
                   <li>
-                    <img src="/img/women/clothes/ho5.avif" alt="Person in leopard print outfit">
-                    <a href="/frontendwomen/trending.html">View all</a>
+                    <img src="../img/women/clothes/ho5.avif" alt="Person in leopard print outfit">
+                    <a href="../frontendwomen/trending.html">View all</a>
                 </li>
                     
                     <li>
-                        <img src="/img/women/trending/se4.avif" alt="Person in leather and suede outfit">
-                        <a href="/frontendwomen/trending.html#sequin">Sequin Edit</a>
+                        <img src="../img/women/trending/se4.avif" alt="Person in leather and suede outfit">
+                        <a href="../frontendwomen/trending.html#sequin">Sequin Edit</a>
                     </li>
                     <li>
-                      <img src="/img/women/clothes/ho3.avif" alt="Person in leopard print outfit">
-                      <a href="/frontendwomen/trending.html#winter">Winter sun</a>
+                      <img src="../img/women/clothes/ho3.avif" alt="Person in leopard print outfit">
+                      <a href="../frontendwomen/trending.html#winter">Winter sun</a>
                   </li>
                   <li>
-                    <img src="/img/women/clothes/d3.webp" alt="Person in leopard print outfit">
-                    <a href="/frontendwomen/trending.html#denim">Denim </a>
+                    <img src="../img/women/clothes/d3.webp" alt="Person in leopard print outfit">
+                    <a href="../frontendwomen/trending.html#denim">Denim </a>
                 </li>
                    
                     
@@ -213,11 +241,11 @@
             <div class="main-content column">
                
                 <div class="card">
-                    <img src="/img/women/clothes/ho4.avif" alt="Person in basics refresh outfit">
+                    <img src="../img/women/clothes/ho4.avif" alt="Person in basics refresh outfit">
                     <div class="card-title">BASICS REFRESH</div>
                 </div>
                 <div class="card">
-                    <img src="/img/women/clothes/sp5.avif" alt="Person in colour lab outfit">
+                    <img src="../img/women/clothes/sp5.avif" alt="Person in colour lab outfit">
                     <div class="card-title">SPRING PREVIEW</div>
                 </div>
             </div>
@@ -237,24 +265,24 @@
               <div class="column">
                 <h2>SHOP BY PRODUCTS </h2>
                 <ul>
-                  <li><a href="/frontendwomen/accessories.html">View all</a></li>
-                  <li><a href="/frontendwomen/accessories.html">New in</a></li>
-                  <li><a href="/frontendwomen/accessories.html#hats">Caps & Hats</a></li>
+                  <li><a href="../frontendwomen/accessories.html">View all</a></li>
+                  <li><a href="../frontendwomen/accessories.html">New in</a></li>
+                  <li><a href="../frontendwomen/accessories.html#hats">Caps & Hats</a></li>
                   
-                  <li><a href="/frontendwomen/accessories.html#hair">Hair Accessories</a></li>
-                  <li><a href="/frontendwomen/accessories.html#sunglass">Sunglass</a></li>
-                  <li><a href="/frontendwomen/accessories.html#bags">Bags & purses</a></li>
+                  <li><a href="../frontendwomen/accessories.html#hair">Hair Accessories</a></li>
+                  <li><a href="../frontendwomen/accessories.html#sunglass">Sunglass</a></li>
+                  <li><a href="../frontendwomen/accessories.html#bags">Bags & purses</a></li>
                  
                 </ul>
               </div>
               <div class="column">
                 <h2>SHOP BY JEWELLERY </h2>
                 <ul>
-                  <li><a href="/frontendwomen/accessories2.html"><img src="/img/women/accssories/n4.avif" alt="View All" /> VIEW </a></li>
-                  <li><a href="/frontendwomen/accessories2.html#earings"><img src="/img/women/accssories/e4.avif" alt=" View All" />EARINGS</a></li>
-                  <li><a href="/frontendwomen/accessories2.html#necklace"><img src="/img/women/accssories/n5.avif" alt=" View All" />NECKLACES</a></li>
-                  <li><a href="/frontendwomen/accessories2.html#brace"><img src="/img/women/accssories/b2.avif" alt=" View All" />BRACELETS</a></li>
-                  <li><a href="/frontendwomen/accessories2.html#rings"><img src="/img/women/accssories/r2.avif" alt=" View All" />RINGS</a></li>
+                  <li><a href="../frontendwomen/accessories2.html"><img src="../img/women/accssories/n4.avif" alt="View All" /> VIEW </a></li>
+                  <li><a href="../frontendwomen/accessories2.html#earings"><img src="../img/women/accssories/e4.avif" alt=" View All" />EARINGS</a></li>
+                  <li><a href="../frontendwomen/accessories2.html#necklace"><img src="../img/women/accssories/n5.avif" alt=" View All" />NECKLACES</a></li>
+                  <li><a href="../frontendwomen/accessories2.html#brace"><img src="../img/women/accssories/b2.avif" alt=" View All" />BRACELETS</a></li>
+                  <li><a href="../frontendwomen/accessories2.html#rings"><img src="../img/women/accssories/r2.avif" alt=" View All" />RINGS</a></li>
                   
                 </ul>
               </div>
@@ -270,39 +298,39 @@
                 <h2>TOP-SEARCHED FAVES</h2>
                 <ul>
                     <li>
-                        <img src="/img/women/makeup/m5.webp" alt="Person">
-                        <a href="/frontendwomen/facebody.html">View all</a>
+                        <img src="../img/women/makeup/m5.webp" alt="Person">
+                        <a href="../frontendwomen/facebody.html">View all</a>
                     </li>
                     <li>
-                        <img src="/img/women/makeup/m11.webp" alt="Person ">
-                        <a href="/frontendwomen/facebody.htm#makeup">Makeup</a>
+                        <img src="../img/women/makeup/m11.webp" alt="Person ">
+                        <a href="../frontendwomen/facebody.htm#makeup">Makeup</a>
                     </li>
                     <li>
-                        <img src="/img/women/makeup/hs1.avif" alt="Person">
-                        <a href="/frontendwomen/facebody.htm#face">Skin Care</a>
+                        <img src="../img/women/makeup/hs1.avif" alt="Person">
+                        <a href="../frontendwomen/facebody.htm#face">Skin Care</a>
                     </li>
                     <li>
-                      <img src="/img/women/makeup/h.avif" alt="Person">
-                      <a href="/frontendwomen/facebody.htm#face">Hair Care</a>
+                      <img src="../img/women/makeup/h.avif" alt="Person">
+                      <a href="../frontendwomen/facebody.htm#face">Hair Care</a>
                   </li>
                   <li>
-                    <img src="/img/women/makeup/hb1.avif" alt="Person">
-                    <a href="/frontendwomen/facebody.htm#body">Body Care</a>
+                    <img src="../img/women/makeup/hb1.avif" alt="Person">
+                    <a href="../frontendwomen/facebody.htm#body">Body Care</a>
                 </li>
                     
                 </ul>
             </div>
             <div class="main-content column">
                 <div class="card">
-                    <img src="/img/women/makeup/m6.webp" alt="Person in spring preview outfit">
+                    <img src="../img/women/makeup/m6.webp" alt="Person in spring preview outfit">
                     <div class="card-title">fashion look</div>
                 </div>
                 <div class="card">
-                    <img src="/img/women/makeup/h2.avif" alt="Person in basics refresh outfit">
+                    <img src="../img/women/makeup/h2.avif" alt="Person in basics refresh outfit">
                     <div class="card-title">Hair smooth</div>
                 </div>
                 <div class="card">
-                    <img src="/img/women/makeup/hb2.avif" alt="Person in colour lab outfit">
+                    <img src="../img/women/makeup/hb2.avif" alt="Person in colour lab outfit">
                     <div class="card-title">Body care</div>
                 </div>
             </div>
@@ -320,23 +348,23 @@
               <div class="column">
                 <h2>SHOP BY PRODUCTS</h2>
                 <ul>
-                  <li><a href="/frontendwomen/activewear.html">View all</a></li>
-                  <li><a href="activewear.html">Newin</a></li>
-                  <li><a href="/frontendwomen/activewear.html#Trainers">Trainers</a></li>
-                  <li><a href="/frontendwomen/activewear.html#Leggins">Shorts</a></li>
-                  <li><a href="/frontendwomen/clothing.html#jackets">Jackets</a></li>
-                  <li><a href="/frontendwomen/accessories.html">Accessories</a></li>
+                  <li><a href="../frontendwomen/activewear.html">View all</a></li>
+                  <li><a href="../frontendwomen/activewear.html">Newin</a></li>
+                  <li><a href="../frontendwomen/activewear.html#Trainers">Trainers</a></li>
+                  <li><a href="../frontendwomen/activewear.html#Leggins">Shorts</a></li>
+                  <li><a href="../frontendwomen/clothing.html#jackets">Jackets</a></li>
+                  <li><a href="../frontendwomen/accessories.html">Accessories</a></li>
                   
                 </ul>
               </div>
               <div class="column">
                 <h2>SHOP BY ACTIVITY</h2>
                 <ul>
-                  <li><a href="/frontendwomen/activewear.html#Leggins"><img src="/img/women/activewear/a12.webp" alt=" View All" /> LEGGINGS</a></li>
+                  <li><a href="../frontendwomen/activewear.html#Leggins"><img src="../img/women/activewear/a12.webp" alt=" View All" /> LEGGINGS</a></li>
                 
-                  <li><a href="/frontendwomen/activewear.html#Trainers"><img src="/img/women/activewear/swim.jpeg" alt="clothing View All" /> SWIM</a></li>
-                  <li><a href="/frontendwomen/activewear.html#Trainers"><img src="/img/women/clothes/tt4.jpg" alt="Tops View All" /> FOOTBALL</a></li>
-                  <li><a href="/frontendwomen/footwear.html#shoes"><img src="/img/women/footwear/sh7.jpg" alt=" shoes All" /> GYM </a></li>
+                  <li><a href="../frontendwomen/activewear.html#Trainers"><img src="../img/women/activewear/swim.jpeg" alt="clothing View All" /> SWIM</a></li>
+                  <li><a href="../frontendwomen/activewear.html#Trainers"><img src="../img/women/clothes/tt4.jpg" alt="Tops View All" /> FOOTBALL</a></li>
+                  <li><a href="../frontendwomen/footwear.html#shoes"><img src="../img/women/footwear/sh7.jpg" alt=" shoes All" /> GYM </a></li>
                  
                   
                 </ul>
@@ -350,7 +378,7 @@
   
   
    <div class="dropdown">
-          <a href="shoe.html">Footwear</a>
+          <a href="../frontendwomen/footwear.html">Footwear</a>
           <div class="dropdown-content">
             <div class="container">
               <div class="column">
@@ -358,9 +386,9 @@
                 <ul>
                   <li><a href="#">View all</a></li>
                   <li><a href="#">Newin</a></li>
-                  <li><a href="/frontendwomen/footwear.html#heels">Heels</a></li>
-                  <li><a href="/frontendwomen/footwear.html#shoe">Shoes</a></li>
-                  <li><a href="/frontendwomen/footwear.html#boots">Boots</a></li>
+                  <li><a href="../frontendwomen/footwear.html#heels">Heels</a></li>
+                  <li><a href="../frontendwomen/footwear.html#shoe">Shoes</a></li>
+                  <li><a href="../frontendwomen/footwear.html#boots">Boots</a></li>
                  
                 </ul>
               </div>
@@ -368,9 +396,9 @@
                 <h2>SHOP BY PRODUCTS</h2>
                 <ul>
                  
-                  <li><a href="/frontendwomen/footwear.html#sandals"><img src="/img/women/footwear/sh03.jpg" alt="Winter View All" /> SANDALS</a></li>
-                  <li><a href="/frontendwomen/footwear.html#shoe"><img src="/img/women/footwear/s6.avif" alt="Winter View All" />SOCKS</a></li>
-                  <li><a href="/frontendwomen/footwear.html#shoe"><img src="/img/women/footwear/s1.avif" alt="Winter View All" />RUNNING TRAINERS</a></li>
+                  <li><a href="../frontendwomen/footwear.html#sandals"><img src="../img/women/footwear/sh03.jpg" alt="Winter View All" /> SANDALS</a></li>
+                  <li><a href="../frontendwomen/footwear.html#shoe"><img src="../img/women/footwear/s6.avif" alt="Winter View All" />SOCKS</a></li>
+                  <li><a href="../frontendwomen/footwear.html#shoe"><img src="../img/women/footwear/s1.avif" alt="Winter View All" />RUNNING TRAINERS</a></li>
                 
                 </ul>
               </div>
@@ -388,20 +416,20 @@
               <div class="column">
                 <h2>LIFE STYLES</h2>
                 <ul>
-                  <li><a href="lifestyle.html#health">Styles</a></li>
-                  <li><a href="#health">Fitness</a></li>
-                  <li><a href="#travel">Articals</a></li>
-                  <li><a href="#home"><strong>New in: Today</strong></a></li>
-                  <li><a href="#joinlifestyle ">Join Community</a></li>
+                  <li><a href="../frontendwomen/lifestylewomen.html#health">Styles</a></li>
+                  <li><a href="../frontendwomen/lifestylewomen.html#health">Fitness</a></li>
+                  <li><a href="../frontendwomen/lifestylewomen.html#travel">Articals</a></li>
+                  <li><a href="../frontendwomen/lifestylewomen.html#home"><strong>New in: Today</strong></a></li>
+                  <li><a href="../frontendwomen/lifestylewomen.html#joinlifestyle ">Join Community</a></li>
                   
                 </ul>
               </div>
               <div class="column">
                 <h2>FASHION</h2>
                 <ul>
-                  <li><a href="#"><img src="img/acc3.avif" alt="Winter View All" /> View all</a></li>
-                  <li><a href="#"><img src="img/tt2.jpg" alt="Winter View All" /> Bestsellers</a></li>
-                  <li><a href="#"><img src="img/acc2.avif" alt="Winter View All" />  dresses</a></li>
+                  <li><a href="#"><img src="../img/acc3.avif" alt="Winter View All" /> View all</a></li>
+                  <li><a href="#"><img src="../img/tt2.jpg" alt="Winter View All" /> Bestsellers</a></li>
+                  <li><a href="#"><img src="../img/acc2.avif" alt="Winter View All" />  dresses</a></li>
              
                 </ul>
               </div>
@@ -416,7 +444,7 @@
        
   
           <div class="dropdown">
-          <a href="sale.html" style="color: #f35252;">Sale</a>
+          <a href="#" style="color: #f35252;">Sale</a>
           <div class="dropdown-content">
             <div class="container">
               <div class="column">
@@ -436,12 +464,12 @@
               <div class="column">
                 <h2>SHOP WINTER</h2>
                 <ul>
-                  <li><a href="#"><img src="img/acc3.avif" alt="Winter View All" /> View all</a></li>
-                  <li><a href="#"><img src="img/tt2.jpg" alt="Winter View All" /> Bestsellers</a></li>
-                  <li><a href="#"><img src="img/acc2.avif" alt="Winter View All" />  dresses</a></li>
-                  <li><a href="#"><img src="imgs/a11.webp" alt="Winter View All" /> Coats</a></li>
-                  <li><a href="#"><img src="img/acc4.avif" alt="Winter View All" /> Accessories</a></li>
-                  <li><a href="#"><img src="img/ja2.avif" alt="Winter View All" /> Boots</a></li>
+                  <li><a href="#"><img src="" alt="Winter View All" /> View all</a></li>
+                  <li><a href="#"><img src="" alt="Winter View All" /> Bestsellers</a></li>
+                  <li><a href="#"><img src="" alt="Winter View All" />  dresses</a></li>
+                  <li><a href="#"><img src="" alt="Winter View All" /> Coats</a></li>
+                  <li><a href="#"><img src="" alt="Winter View All" /> Accessories</a></li>
+                  <li><a href="#"><img src="" alt="Winter View All" /> Boots</a></li>
                 </ul>
               </div>
             </div>

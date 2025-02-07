@@ -5,7 +5,7 @@
   </title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/css/product.css">
+  <link rel="stylesheet" href="../css/product.css">
  </head>
  <body>
   
@@ -13,7 +13,7 @@
     <div id="header"></div>
     <script>
  
-        fetch('/frontendwomen/womennav.html')
+        fetch('../frontendwomen/womennav.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header').innerHTML = data;
@@ -43,159 +43,118 @@
    <p>Looking for something new? Discover emerging trends, the latest accessories for women and ...</p>
  </div>
   
-  <div class="filters">
-    <select>
-      <option disabled selected>Sort</option>
-      <option>Price: Low to High</option>
-      <option>Price: High to Low</option>
-      <option>Newest Arrivals</option>
-    </select>
-   
-    <select>
-      <option disabled selected>Size</option>
-      <option>Small</option>
-      <option>Medium</option>
-      <option>Large</option>
-    </select>
-    <select>
-      <option disabled selected>Colour</option>
-      <option>Black</option>
-      <option>White</option>
-      <option>Red</option>
-    </select>
-   
-    <select>
-      <option disabled selected>Price Range</option>
-      <option>Under 4500</option>
-      <option>5500 - 6500</option>
-      <option>Over 6500</option>
-    </select>
+
+    <div class="filters">
+        <select id="sort">
+            <option disabled selected>Sort</option>
+            <option>Price: Low to High</option>
+            <option>Price: High to Low</option>
+            <option>Newest Arrivals</option>
+        </select>
+    
+        <select id="filter-size" class="filter">
+            <option value="All">Size</option>
+            <option>Small</option>
+            <option>Medium</option>
+            <option>Large</option>
+        </select>
+    
+        <select id="filter-color" class="filter">
+            <option value="All">Colour</option>
+            <option>Black</option>
+            <option>White</option>
+            <option>Red</option>
+        </select>
+    
+        <select id="filter-price" class="filter">
+            <option value="All">Price Range</option>
+            <option>Under 4500</option>
+            <option>5500 - 6500</option>
+            <option>Over 6500</option>
+        </select>
+    </div>
+    
   </div>
 
   <div class="header1"><h2>Womens's Collection</h2></div>
   <div class="products" id="caps">
    
-    <div class="product">
-        <a href="/product1.html" target="_blank">
-     <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/c11.avif" width="200"/></a>
-     <p>Nc design lessweight extreme Caps & Hats </p>
-     <p class="price">3500.00</p>
-     <i class="far fa-heart wishlist"></i>
-    </div>
     
 
-    <div class="product">
-        <a href="/product1.html" target="_blank">
-     <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/c2.avif" width="200"/></a>
-     <p>Nc design lessweight extreme Caps & Hats </p>
-     <p class="price">2500.00</p>
-    <i class="far fa-heart wishlist"></i>
-    </div>
-    <div class="product">
-        <a href="/product1.html" target="_blank">
-     <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/c6.avif" width="200"/></a>
-     <p>Nc design lessweight extreme Caps & Hats </p>
-     <p class="price">2500.00</p>
-    <i class="far fa-heart wishlist"></i>
-    </div>
-    <div class="product">
-        <a href="/product1.html" target="_blank">
-     <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/c7.avif" width="200"/></a>
-     <p>Nc design lessweight extreme Caps & Hats </p>
-     <p class="price">4500.00</p>
-    <i class="far fa-heart wishlist"></i>
-    </div>
-    <div class="product">
-        <a href="/product1.html" target="_blank">
-     <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/c3.avif" width="200"/></a>
-     <p>Nc design lessweight extreme Caps & Hats </p>
-     <p class="price">3500.00</p>
-    <i class="far fa-heart wishlist"></i>
-    </div>
-    <div class="product">
-        <a href="/product1.html" target="_blank">
-     <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/c44.avif" width="200"/></a>
-     <p>Nc design lessweight extreme Caps & Hats </p>
-     <p class="price">3500.00</p>
-    <i class="far fa-heart wishlist"></i>
-    </div>
-    <div class="product">
-        <a href="/product1.html" target="_blank">
-     <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/ac8.webp" width="200"/></a>
-     <p>Nc design lessweight extreme Caps & Hats </p>
-     <p class="price">3500.00</p>
-    <i class="far fa-heart wishlist"></i>
-    </div>
-    <div class="product">
-        <a href="/product1.html" target="_blank">
-     <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/c8.avif" width="200"/></a>
-     <p>Nc design lessweight extreme Caps & Hats </p>
-     <p class="price">3500.00</p>
-    <i class="far fa-heart wishlist"></i>
-    </div>
-
     
-   </div>
- 
-   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const wishlistButtons = document.querySelectorAll(".wishlist");
-
-        wishlistButtons.forEach(button => {
-            button.addEventListener("click", function() {
-                const product = this.closest(".product"); // Parent Product Div
-                const productData = {
-                    img: product.querySelector("img").src,
-                    name: product.querySelector("p").textContent.trim(),
-                    price: product.querySelector(".price").textContent.trim()
-                };
-
-                let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-
-                // Check if already in wishlist
-                const index = wishlist.findIndex(item => item.name === productData.name);
-                if (index === -1) {
-                    wishlist.push(productData); // Add if not present
-                } else {
-                    wishlist.splice(index, 1); // Remove if present
-                }
-
-                localStorage.setItem("wishlist", JSON.stringify(wishlist)); // Save to LocalStorage
-
-                // Toggle Heart Icon
-                this.classList.toggle("fas");
-                this.classList.toggle("far");
-                this.classList.toggle("added");
-            });
-        });
-    });
-</script>
-
-
-
- <script>
-     document.addEventListener("DOMContentLoaded", function() {
-         const wishlistButtons = document.querySelectorAll(".wishlist");
- 
-         wishlistButtons.forEach(button => {
-             button.addEventListener("click", function() {
-                 this.classList.toggle("fas");
-                 this.classList.toggle("far");
-                 this.classList.toggle("added");
-             });
-         });
-     });
- </script>
-
-
+    <div class="product" data-color="Brown" data-size="Medium" data-price="3500">
+    <img alt="Model wearing NC DESIGN " height="300" src="../img/women/accssories/c11.avif" width="200"/>
+    <div class="actions">
+        <button><i class="far fa-heart wishlist"></i></button>
+        <button><i class="fas fa-shopping-cart"></i></button>
+        </div>
+    <p>Nc design lessweight Caps </p>
+    <p class="price">3500.00</p>
+    </div>
+    
+    <div class="product" data-color="White" data-size="Medium" data-price="3500">
+        <img alt="Model wearing NC DESIGN " height="300" src="../img/women/accssories/c2.avif" width="200"/>
+        <div class="actions">
+            <button><i class="far fa-heart wishlist"></i></button>
+            <button><i class="fas fa-shopping-cart"></i></button>
+            </div>
+        <p>Nc design lessweight Caps </p>
+        <p class="price">3500.00</p>
+        </div>
+    
+      <div class="product" data-color="Black" data-size="Medium" data-price="5500">
+            <img alt="Model wearing NC DESIGN " height="300" src="../img/women/accssories/c6.avif" width="200"/>
+            <div class="actions">
+                <button><i class="far fa-heart wishlist"></i></button>
+                <button><i class="fas fa-shopping-cart"></i></button>
+                </div>
+            <p>Nc design lessweight Caps </p>
+            <p class="price">4500.00</p>
+            </div>
+     <div class="product" data-color="White" data-size="Medium" data-price="4500">
+      <img alt="Model wearing NC DESIGN " height="300" src="../img/women/accssories/c7.avif" width="200"/>
+      <div class="actions">
+      <button><i class="far fa-heart wishlist"></i></button>
+      <button><i class="fas fa-shopping-cart"></i></button>
+      </div>
+      <p>Nc design lessweight Caps </p>
+      <p class="price">4500.00</p>
+     </div>
+   
+    
+  
+    <div class="product">
+        <a href="/product1.html" target="_blank">
+     <img alt="Model wearing NC DESIGN " height="300" 
+     src="../img/women/accssories/c3.avif" width="200"/></a>
+     <p>Nc design lessweight extreme Caps & Hats </p>
+     <p class="price">3500.00</p>
+    <i class="far fa-heart wishlist"></i>
+    </div>
+    <div class="product">
+        <a href="/product1.html" target="_blank">
+     <img alt="Model wearing NC DESIGN " height="300" 
+     src="../img/women/accssories/c44.avif" width="200"/></a>
+     <p>Nc design lessweight extreme Caps & Hats </p>
+     <p class="price">3500.00</p>
+    <i class="far fa-heart wishlist"></i>
+    </div>
+    <div class="product">
+        <a href="/product1.html" target="_blank">
+     <img alt="Model wearing NC DESIGN " height="300" 
+     src="../img/women/accssories/ac8.webp" width="200"/></a>
+     <p>Nc design lessweight extreme Caps & Hats </p>
+     <p class="price">3500.00</p>
+    <i class="far fa-heart wishlist"></i>
+    </div>
+    <div class="product">
+        <a href="/product1.html" target="_blank">
+     <img alt="Model wearing NC DESIGN " height="300" 
+     src="../img/women/accssories/c8.avif" width="200"/></a>
+     <p>Nc design lessweight extreme Caps & Hats </p>
+     <p class="price">3500.00</p>
+    <i class="far fa-heart wishlist"></i>
+    </div></div>
 
    <div class="header1"><h2>Women's Sunglass Collection</h2></div>
 
@@ -204,7 +163,7 @@
     <div class="product">
         <a href="/product1.html" target="_blank">
      <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/sg1.jpg" width="200"/></a>
+     src="../img/women/accssories/sg1.jpg" width="200"/></a>
      <p>NC DESIGN SUNGLASSES </p>
      <p class="price">5500.00</p>
     <i class="far fa-heart wishlist"></i>
@@ -213,7 +172,7 @@
     <div class="product">
         <a href="/product1.html" target="_blank">
      <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/sg2.jpg" width="200"/></a>
+     src="../img/women/accssories/sg2.jpg" width="200"/></a>
      <p>NC DESIGN SUNGLASSES </p>
      <p class="price">4500.00</p>
     <i class="far fa-heart wishlist"></i>
@@ -221,7 +180,7 @@
     <div class="product">
         <a href="/product1.html" target="_blank">
      <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/sg6.jpeg" width="200"/></a>
+     src="../img/women/accssories/sg6.jpeg" width="200"/></a>
      <p>NC DESIGN SUNGLASSES </p>
      <p class="price">5500.00</p>
     <i class="far fa-heart wishlist"></i>
@@ -229,7 +188,7 @@
     <div class="product">
         <a href="/product1.html" target="_blank">
      <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/sg5.jpeg" width="200"/></a>
+     src="../img/women/accssories/sg5.jpeg" width="200"/></a>
      <p>NC DESIGN SUNGLASSES </p>
      <p class="price">5500.00</p>
     <i class="far fa-heart wishlist"></i>
@@ -237,7 +196,7 @@
     <div class="product">
         <a href="/product1.html" target="_blank">
      <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/sg4.webp" width="200"/></a>
+     src="../img/women/accssories/sg4.webp" width="200"/></a>
      <p>NC DESIGN SUNGLASSES </p>
      <p class="price">5500.00</p>
     <i class="far fa-heart wishlist"></i>
@@ -245,7 +204,7 @@
     <div class="product">
         <a href="/product1.html" target="_blank">
      <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/sg6.jpg" width="200"/></a>
+     src="../img/women/accssories/sg6.jpg" width="200"/></a>
      <p>NC DESIGN SUNGLASSES </p>
      <p class="price">5500.00</p>
     <i class="far fa-heart wishlist"></i>
@@ -253,7 +212,7 @@
     <div class="product">
         <a href="/product1.html" target="_blank">
      <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/sg5.jpg" width="200"/></a>
+     src="../img/women/accssories/sg5.jpg" width="200"/></a>
      <p>NC DESIGN SUNGLASSES </p>
      <p class="price">5500.00</p>
     <i class="far fa-heart wishlist"></i>
@@ -261,7 +220,7 @@
     <div class="product">
         <a href="/product1.html" target="_blank">
      <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/sg6.jpg" width="200"/></a>
+     src="../img/women/accssories/sg6.jpg" width="200"/></a>
      <p>NC DESIGN SUNGLASSES </p>
      <p class="price">5500.00</p>
     <i class="far fa-heart wishlist"></i>
@@ -275,7 +234,7 @@
         <div class="product">
             <a href="/product1.html" target="_blank">
          <img alt="Model wearing NC DESIGN " height="300" 
-         src="/img/women/accssories/ac4.webp" width="200"/></a>
+         src="../img/women/accssories/ac4.webp" width="200"/></a>
          <p>NC DESIGN    Bags  </p>
          <p class="price">6500.00</p>
         <i class="far fa-heart wishlist"></i>
@@ -283,16 +242,7 @@
         <div class="product">
             <a href="/product1.html" target="_blank">
          <img alt="Model wearing NC DESIGN " height="300" 
-         src="/img/women/accssories/ac5.webp" width="200"/></a>
-         <p>NC DESIGN    Bags  </p>
-         <p class="price">6500.00</p>
-        <i class="far fa-heart wishlist"></i>
-        </div>
-
-        <div class="product">
-            <a href="/product1.html" target="_blank">
-         <img alt="Model wearing NC DESIGN " height="300" 
-         src="/img/women/accssories/ac10.webp" width="200"/></a>
+         src="../img/women/accssories/ac5.webp" width="200"/></a>
          <p>NC DESIGN    Bags  </p>
          <p class="price">6500.00</p>
         <i class="far fa-heart wishlist"></i>
@@ -301,7 +251,16 @@
         <div class="product">
             <a href="/product1.html" target="_blank">
          <img alt="Model wearing NC DESIGN " height="300" 
-         src="/img/women/accssories/ac7.webp" width="200"/></a>
+         src="../img/women/accssories/ac10.webp" width="200"/></a>
+         <p>NC DESIGN    Bags  </p>
+         <p class="price">6500.00</p>
+        <i class="far fa-heart wishlist"></i>
+        </div>
+
+        <div class="product">
+            <a href="/product1.html" target="_blank">
+         <img alt="Model wearing NC DESIGN " height="300" 
+         src="../img/women/accssories/ac7.webp" width="200"/></a>
          <p>NC DESIGN  Bags  </p>
          <p class="price">6500.00</p>
         <i class="far fa-heart wishlist"></i>
@@ -311,7 +270,7 @@
         <div class="product">
             <a href="/product1.html" target="_blank">
          <img alt="Model wearing NC DESIGN " height="300" 
-         src="/img/women/accssories/ac14.webp" width="200"/></a>
+         src="../img/women/accssories/ac14.webp" width="200"/></a>
          <p>NC DESIGN Purse  </p>
          <p class="price">3500.00</p>
         <i class="far fa-heart wishlist"></i>
@@ -320,7 +279,7 @@
         <div class="product">
             <a href="/product1.html" target="_blank">
          <img alt="Model wearing NC DESIGN " height="300" 
-         src="/img/women/accssories/ac10.webp" width="200"/></a>
+         src="../img/women/accssories/ac10.webp" width="200"/></a>
          <p>NC DESIGN Bags  </p>
          <p class="price">6500.00</p>
         <i class="far fa-heart wishlist"></i>
@@ -328,7 +287,7 @@
         <div class="product">
             <a href="/product1.html" target="_blank">
          <img alt="Model wearing NC DESIGN " height="300" 
-         src="/img/women/accssories/b5.jpg" width="200"/></a>
+         src="../img/women/accssories/b5.jpg" width="200"/></a>
          <p>NC DESIGN Purse  </p>
          <p class="price">3500.00</p>
         <i class="far fa-heart wishlist"></i>
@@ -336,7 +295,7 @@
         <div class="product">
             <a href="/product1.html" target="_blank">
          <img alt="Model wearing NC DESIGN " height="300" 
-         src="/img/women/accssories/b3.jpg" width="200"/></a>
+         src="../img/women/accssories/b3.jpg" width="200"/></a>
          <p>NC DESIGN Purse  </p>
          <p class="price">3500.00</p>
         <i class="far fa-heart wishlist"></i>
@@ -352,7 +311,7 @@
     <div class="product">
         <a href="/product1.html" target="_blank">
      <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/h1.avif" width="200"/></a>
+     src="../img/women/accssories/h1.avif" width="200"/></a>
      <p>NC DESIGN  HAIR ACCESSORIES </p>
      <p class="price">5500.00</p>
     <i class="far fa-heart wishlist"></i>
@@ -361,7 +320,7 @@
     <div class="product">
         <a href="/product1.html" target="_blank">
      <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/h2.avif" width="200"/></a>
+     src="../img/women/accssories/h2.avif" width="200"/></a>
      <p>NC DESIGN  HAIR ACCESSORIES </p>
      <p class="price">5500.00</p>
     <i class="far fa-heart wishlist"></i>
@@ -369,7 +328,7 @@
     <div class="product">
         <a href="/product1.html" target="_blank">
      <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/h33.avif" width="200"/></a>
+     src="../img/women/accssories/h33.avif" width="200"/></a>
      <p>NC DESIGN  HAIR ACCESSORIES </p>
      <p class="price">5500.00</p>
     <i class="far fa-heart wishlist"></i>
@@ -377,7 +336,7 @@
     <div class="product">
         <a href="/product1.html" target="_blank">
      <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/h4.avif" width="200"/></a>
+     src="../img/women/accssories/h4.avif" width="200"/></a>
      <p>NC DESIGN  HAIR ACCESSORIES </p>
      <p class="price">5500.00</p>
     <i class="far fa-heart wishlist"></i>
@@ -385,7 +344,7 @@
     <div class="product">
         <a href="/product1.html" target="_blank">
      <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/h5.avif" width="200"/></a>
+     src="../img/women/accssories/h5.avif" width="200"/></a>
      <p>NC DESIGN  HAIR ACCESSORIES </p>
      <p class="price">5500.00</p>
     <i class="far fa-heart wishlist"></i>
@@ -393,7 +352,7 @@
     <div class="product">
         <a href="/product1.html" target="_blank">
      <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/h6.avif" width="200"/></a>
+     src="../img/women/accssories/h6.avif" width="200"/></a>
      <p>NC DESIGN  HAIR ACCESSORIES </p>
      <p class="price">5500.00</p>
     <i class="far fa-heart wishlist"></i>
@@ -401,7 +360,7 @@
     <div class="product">
         <a href="/product1.html" target="_blank">
      <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/h7.avif" width="200"/></a>
+     src="../img/women/accssories/h7.avif" width="200"/></a>
      <p>NC DESIGN  HAIR ACCESSORIES </p>
      <p class="price">5500.00</p>
     <i class="far fa-heart wishlist"></i>
@@ -409,25 +368,144 @@
     <div class="product">
         <a href="/product1.html" target="_blank">
      <img alt="Model wearing NC DESIGN " height="300" 
-     src="/img/women/accssories/h8.avif" width="200"/></a>
+     src="../img/women/accssories/h8.avif" width="200"/></a>
      <p>NC DESIGN  HAIR ACCESSORIES </p>
      <p class="price">5500.00</p>
     <i class="far fa-heart wishlist"></i>
     </div>
+
+
+    
+    <div class="product" data-color="Brown" data-size="Medium" data-price="3500">
+        <img alt="Model wearing NC DESIGN " height="300" src="../img/women/accssories/c11.avif" width="200"/>
+        <div class="actions">
+            <button><i class="far fa-heart wishlist"></i></button>
+            <button><i class="fas fa-shopping-cart"></i></button>
+            </div>
+        <p>Nc design lessweight Caps </p>
+        <p class="price">3500.00</p>
+        </div>
+        
      </div>
 
 
-    
+
 
     
-  
-  
+
+
+     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Wishlist functionality
+            const wishlistButtons = document.querySelectorAll(".wishlist");
+        
+            wishlistButtons.forEach(button => {
+                button.addEventListener("click", function() {
+                    const product = this.closest(".product"); // Get parent product div
+                    const productData = {
+                        img: product.querySelector("img").src,
+                        name: product.querySelector("p").textContent.trim(),
+                        price: product.querySelector(".price").textContent.trim()
+                    };
+        
+                    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+        
+                    // Check if already in wishlist
+                    const index = wishlist.findIndex(item => item.name === productData.name);
+                    if (index === -1) {
+                        wishlist.push(productData); // Add if not present
+                    } else {
+                        wishlist.splice(index, 1); // Remove if present
+                    }
+        
+                    localStorage.setItem("wishlist", JSON.stringify(wishlist)); // Save to LocalStorage
+        
+                    // Toggle Heart Icon
+                    this.classList.toggle("fas");
+                    this.classList.toggle("far");
+                    this.classList.toggle("added");
+                });
+            });
+        
+            // Add to Cart functionality
+            const cartButtons = document.querySelectorAll(".add-to-cart");
+        
+            cartButtons.forEach(button => {
+                button.addEventListener("click", function() {
+                    const product = this.closest(".product");
+                    const productData = {
+                        img: product.querySelector("img").src,
+                        name: product.querySelector("p").textContent.trim(),
+                        price: product.querySelector(".price").textContent.trim(),
+                        quantity: 1
+                    };
+        
+                    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        
+                    // Check if already in cart
+                    const index = cart.findIndex(item => item.name === productData.name);
+                    if (index === -1) {
+                        cart.push(productData); // Add new item
+                    } else {
+                        cart[index].quantity += 1; // Increase quantity
+                    }
+        
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                    alert("Item added to cart!");
+                });
+            });
+        
+            // Filtering functionality
+            function filterProducts() {
+                const selectedColor = document.getElementById("filter-color").value;
+                const selectedSize = document.getElementById("filter-size").value;
+                const selectedPrice = document.getElementById("filter-price").value;
+        
+                document.querySelectorAll(".product").forEach(product => {
+                    let colorMatch = selectedColor === "All" || product.dataset.color === selectedColor;
+                    let sizeMatch = selectedSize === "All" || product.dataset.size === selectedSize;
+                    let priceMatch = selectedPrice === "All" || (
+                        selectedPrice === "Under 4500" && parseInt(product.dataset.price) < 4500 ||
+                        selectedPrice === "5500 - 6500" && (parseInt(product.dataset.price) >= 5500 && parseInt(product.dataset.price) <= 6500) ||
+                        selectedPrice === "Over 6500" && parseInt(product.dataset.price) > 6500
+                    );
+        
+                    if (colorMatch && sizeMatch && priceMatch) {
+                        product.style.display = "block";
+                    } else {
+                        product.style.display = "none";
+                    }
+                });
+            }
+        
+            document.querySelectorAll(".filter").forEach(select => {
+                select.addEventListener("change", filterProducts);
+            });
+        
+            // Sorting functionality
+            document.getElementById("sort").addEventListener("change", function() {
+                let productsContainer = document.querySelector(".products");
+                let productsArray = Array.from(productsContainer.children);
+        
+                if (this.value === "Price: Low to High") {
+                    productsArray.sort((a, b) => parseInt(a.dataset.price) - parseInt(b.dataset.price));
+                } else if (this.value === "Price: High to Low") {
+                    productsArray.sort((a, b) => parseInt(b.dataset.price) - parseInt(a.dataset.price));
+                }
+        
+                productsContainer.innerHTML = "";
+                productsArray.forEach(product => productsContainer.appendChild(product));
+            });
+        });
+        </script>
+        
+
 
   <div id="footer"></div>
 
   <script>
       
-      fetch('/frontend/footer.html')
+      fetch('../frontend/footer.html')
           .then(response => response.text())
           .then(data => {
               document.getElementById('footer').innerHTML = data;

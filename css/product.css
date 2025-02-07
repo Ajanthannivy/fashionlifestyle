@@ -19,6 +19,62 @@ body {
     background-color: #fff;
 }
 
+.product .actions {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.product .actions button {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.product .actions button:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.1);
+}
+
+.product .add-to-cart {
+    background-color: #d9534f;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.product .add-to-cart:hover {
+    background-color: #c9302c;
+}
+
+.product .add-to-cart:active {
+    animation: bounce 0.5s;
+}
+
+.product:hover .actions {
+    opacity: 1;
+    pointer-events: auto;
+    animation: fadeIn 0.5s;
+}
+
 /* Header Section */
 .header1 {
     text-align: center;

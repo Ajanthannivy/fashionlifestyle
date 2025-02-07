@@ -4,9 +4,42 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="../css/index.css">
     <style>
      
+.menu a {
+  text-decoration: none;
+  color: var(--color-white);
+  margin: 0 10px;
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 0px;
+  transition: background-color 0.3s ease;
+}
+
+.menu a:hover {
+  background-color: var(--color-light-pink);
+  color: var(--color-deep-purple)
+}
+
+.menu a.active {
+  background-color: red; /* Red background for the active menu */
+  color: white;
+}
+
+.sub-header a {
+  text-decoration: none;
+  color: white;
+  margin-left:0 10px;
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 0px;
+  transition: background-color 0.3s ease;
+}
+.sub-header a:hover {
+  background-color:  var(--color-light-pink);
+  color: var(--color-deep-purple)
+}
       .contact-us {
           position: fixed;
           bottom: 20px;
@@ -91,7 +124,7 @@
 <div id="chatbotModal" class="modal">
   <div class="modal-content">
       <span class="close" onclick="closeChat()">&times;</span>
-      <iframe src="/frontend/chatbot.html" width="100%" height="400px"></iframe>
+      <iframe src="../frontend/chatbot.html" width="100%" height="400px"></iframe>
   </div>
 </div>
 
@@ -134,8 +167,8 @@
        
         
             <div class="menu">
-                <a href="/frontendwomen/women.html">WOMEN</a>
-                <a href="/frontendmen/men.html">MEN</a>
+                <a href="../frontendwomen/women.html">WOMEN</a>
+                <a href="../frontendmen/men.html">MEN</a>
             </div>
             <div class="search-bar">
                 <input type="text" placeholder="Search for items and brands" />
@@ -151,9 +184,9 @@
                           <i class="fas fa-times"></i>
                       </div>
                       <div class="header">
-                          <a href="/frontend/customerlogin.html">Sign In</a> | <a href="/frontend/customerjoin.html">Join</a>
+                          <a href="../frontend/customerlogin.html">Sign In</a> | <a href="../frontend/customerjoin.html">Join</a>
                       </div>
-                      <a href="/frontend/account.html" class="menu-item">
+                      <a href="../frontend/account.html" class="menu-item">
                           <i class="fas fa-user"></i> My Account
                       </a>
                       <a href="#" class="menu-item">
@@ -175,7 +208,7 @@
                
                   <div class="dropdown-content">
                      
-                      <a href="/frontend/wishlist.html" class="menu-item">
+                      <a href="../frontend/wishlist.html" class="menu-item">
                           <i class="fas fa-user"></i> Saved product
                       </a>
                       <a href="#" class="menu-item">
@@ -190,7 +223,7 @@
                   <div class="icon"><i class="fas fa-shopping-bag"></i></div>
                   <div class="dropdown-content">
                    
-                      <a href="/frontend/account.html" class="menu-item">
+                      <a href="../frontend/account.html" class="menu-item">
                           <i class="fas fa-user"></i> My Account
                       </a>
                       <a href="#" class="menu-item">
@@ -235,12 +268,12 @@
     <script>
         const heroSection = document.querySelector('.hero1');
         const backgrounds = [
-             '/img/img7.png',
-             '/img/home3.webp',
-             '/img/home2.avif',
-             '/img/img6.jpg',
+             '../img/img7.png',
+             '../img/home3.webp',
+             '../img/home2.avif',
+             '../img/img6.jpg',
             
-            '/img/design2.jpg',
+            '../img/design2.jpg',
           
             
         ];
@@ -271,38 +304,38 @@
   
     <div class="carousel">
       <div class="carousel-item">
-        <a href="/frontend/product1.html" target="_blank">
-          <img src="/img/women/clothes/dress4.jpg" alt="img-1">
+        <a href="../frontend/product1.html" target="_blank">
+          <img src="../img/women/clothes/dress4.jpg" alt="img-1">
         </a>
         <div class="details">Image 1 - Description or Price</div>
       </div>
       <div class="carousel-item">
-        <a href="/frontend/product1.html" target="_blank">
-          <img src="/img/women/accssories/ac6.webp" alt="img-2">
+        <a href="../frontend/product1.html" target="_blank">
+          <img src="../img/women/accssories/ac6.webp" alt="img-2">
         </a>
         <div class="details">Image 2 - Description or Price</div>
       </div>
       <div class="carousel-item">
-        <a href="/frontend/product1.html" target="_blank">
-          <img src="/img/women/clothes/d10.webp" alt="img-3">
+        <a href="../frontend/product1.html" target="_blank">
+          <img src="../img/women/clothes/d10.webp" alt="img-3">
         </a>
         <div class="details">Image 3 - Description or Price</div>
       </div>
       <div class="carousel-item">
-        <a href="/frontend/product1.html" target="_blank">
-          <img src="/img/men/clothes/cs19.jpg" alt="img-4">
+        <a href="../frontend/product1.html" target="_blank">
+          <img src="../img/men/clothes/cs19.jpg" alt="img-4">
         </a>
         <div class="details">Image 4 - Description or Price</div>
       </div>
       <div class="carousel-item">
-        <a href="/frontend/product1.html" target="_blank">
-          <img src="/img/men/clothes/t7.jpg" alt="img-5">
+        <a href="../frontend/product1.html" target="_blank">
+          <img src="../img/men/clothes/t7.jpg" alt="img-5">
         </a>
         <div class="details">Image 5 - Description or Price</div>
       </div>
       <div class="carousel-item">
-        <a href="/frontend/product1.html" target="_blank">
-          <img src="/img/women/footwear/sh04.jpg" alt="img-6">
+        <a href="../frontend/product1.html" target="_blank">
+          <img src="../img/women/footwear/sh04.jpg" alt="img-6">
         </a>
         <div class="details">Image 6 - Description or Price</div>
       </div>

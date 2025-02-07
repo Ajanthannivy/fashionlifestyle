@@ -416,7 +416,7 @@ background-color: var(--color-deep-purple);
   flex-direction:column;
   justify-content:center;
   align-items:flex-start;
-  background-image:url("/img/banner1.jpg");
+  background-image:url("../img/banner1.jpg");
   min-width:580px;
   height:50vh;
   background-size:cover;
@@ -426,7 +426,7 @@ background-color: var(--color-deep-purple);
   }
 
   #nc-banner .banner-box2{
-    background-image:url("/img/banner2.jpg"); 
+    background-image:url("../img/banner2.jpg"); 
   }
   #nc-banner h4{
     color:var(--color-white);
@@ -475,7 +475,7 @@ background-color: var(--color-deep-purple);
   flex-direction:column;
   justify-content:center;
   align-items:flex-start;
-  background-image:url("/img/banner3.webp");
+  background-image:url("../img/banner3.webp");
   min-width:30%;
   height:30vh;
   background-size:cover;
@@ -486,11 +486,11 @@ background-color: var(--color-deep-purple);
 
     
   #banner3 .banner-box2{
-    background-image:url("/img/banner4.jpg");
+    background-image:url("../img/banner4.jpg");
   }
   
   #banner3 .banner-box3{
-    background-image:url("/img/banner5.avif");
+    background-image:url("../img/banner5.avif");
   }
   
   #banner3 h2{

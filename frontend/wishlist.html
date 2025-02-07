@@ -4,43 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Wishlist</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/css/product.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <h1>My Wishlist</h1>
-    <div class="wishlist-container"></div>
+<h1>My Wishlist</h1>
+<div class="wishlist-container"></div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const wishlistContainer = document.querySelector(".wishlist-container");
-            const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-
-            if (wishlist.length === 0) {
-                wishlistContainer.innerHTML = "<p>No items in wishlist.</p>";
-            } else {
-                wishlistContainer.innerHTML = wishlist.map(item => `
-                    <div class="product">
-                        <img src="${item.img}" width="200" height="300" alt="${item.name}">
-                        <p>${item.name}</p>
-                        <p class="price">${item.price}</p>
-                        <button class="remove" data-name="${item.name}">Remove</button>
-                    </div>
-                `).join('');
-            }
-
-            // Remove Wishlist Item
-            document.querySelectorAll(".remove").forEach(button => {
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+        const wishlistContainer = document.querySelector(".wishlist-container");
+    
+        if (wishlist.length === 0) {
+            wishlistContainer.innerHTML = "<p>Your wishlist is empty.</p>";
+        } else {
+            wishlist.forEach(item => {
+                const productDiv = document.createElement("div");
+                productDiv.classList.add("wishlist-item");
+                productDiv.innerHTML = `
+                    <img src="${item.img}" width="100">
+                    <p>${item.name}</p>
+                    <p>${item.price}</p>
+                    <button class="add-to-cart" data-name="${item.name}">Add to Cart</button>
+                    <button class="remove-wishlist" data-name="${item.name}">Remove</button>
+                `;
+                wishlistContainer.appendChild(productDiv);
+            });
+    
+            // Move item to cart
+            document.querySelectorAll(".add-to-cart").forEach(button => {
                 button.addEventListener("click", function() {
-                    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-                    wishlist = wishlist.filter(item => item.name !== this.dataset.name);
-                    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-                    location.reload(); // Reload Wishlist Page
+                    let name = this.dataset.name;
+                    let item = wishlist.find(i => i.name === name);
+    
+                    if (item) {
+                        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                        cart.push(item);
+                        localStorage.setItem("cart", JSON.stringify(cart));
+    
+                        // Remove from wishlist
+                        let updatedWishlist = wishlist.filter(i => i.name !== name);
+                        localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+                        this.parentElement.remove();
+    
+                        if (updatedWishlist.length === 0) {
+                            wishlistContainer.innerHTML = "<p>Your wishlist is empty.</p>";
+                        }
+                    }
                 });
             });
-        });
+    
+            // Remove item from wishlist
+            document.querySelectorAll(".remove-wishlist").forEach(button => {
+                button.addEventListener("click", function() {
+                    let name = this.dataset.name;
+                    let updatedWishlist = wishlist.filter(i => i.name !== name);
+                    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+                    this.parentElement.remove();
+    
+                    if (updatedWishlist.length === 0) {
+                        wishlistContainer.innerHTML = "<p>Your wishlist is empty.</p>";
+                    }
+                });
+            });
+        }
+    });
     </script>
+        
 
 </body>
 </html>

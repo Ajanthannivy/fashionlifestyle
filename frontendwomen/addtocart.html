@@ -1,0 +1,76 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const cartBtn = document.getElementById("cart-btn");
+        const cartDropdown = document.getElementById("cart-dropdown");
+        const cartItemsList = document.getElementById("cart-items");
+        const cartTotal = document.getElementById("cart-total");
+        const cartCount = document.getElementById("cart-count");
+        const clearCartBtn = document.getElementById("clear-cart");
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        function updateCartUI() {
+            cartItemsList.innerHTML = "";
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                const li = document.createElement("li");
+                li.innerHTML = `${item.name} - ₹${item.price} <button onclick="removeFromCart(${index})">❌</button>`;
+                cartItemsList.appendChild(li);
+            });
+            cartTotal.textContent = total;
+            cartCount.textContent = cart.length;
+            localStorage.setItem("cart", JSON.stringify(cart));
+        }
+
+        function addToCart(event) {
+            const product = event.target.closest(".product");
+            const item = {
+                id: product.dataset.id,
+                name: product.dataset.name,
+                price: parseInt(product.dataset.price),
+            };
+            cart.push(item);
+            updateCartUI();
+        }
+
+        window.removeFromCart = function (index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        };
+
+        clearCartBtn.addEventListener("click", function () {
+            cart = [];
+            updateCartUI();
+        });
+
+        cartBtn.addEventListener("click", function () {
+            cartDropdown.style.display = cartDropdown.style.display === "block" ? "none" : "block";
+        });
+
+        document.querySelectorAll(".add-to-cart").forEach(button => {
+            button.addEventListener("click", addToCart);
+        });
+
+        updateCartUI();
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+<div class="cart-container">
+    <button id="cart-btn">🛒 Cart (<span id="cart-count">0</span>)</button>
+    <div id="cart-dropdown" class="cart-dropdown">
+        <h2>Shopping Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total: ₹<span id="cart-total">0</span></p>
+        <button id="clear-cart">Clear Cart</button>
+    </div>
+</div>

@@ -164,7 +164,7 @@ h1 {
   flex-direction:column;
   justify-content:center;
   align-items:flex-start;
-  background-image:url("/img/bannerg1.jpg");
+  background-image:url("../img/bannerg1.jpg");
   min-width:580px;
   height:50vh;
   background-size:cover;
@@ -174,7 +174,7 @@ h1 {
   }
 
   #nc-banner .banner-box2{
-    background-image:url("/img/bannerg2.avif"); 
+    background-image:url("../img/bannerg2.avif"); 
   }
   #nc-banner h4{
     color:var(--color-white);
@@ -223,7 +223,7 @@ h1 {
   flex-direction:column;
   justify-content:center;
   align-items:flex-start;
-  background-image:url("/img/women/activewear/a1.webp");
+  background-image:url("../img/women/activewear/a1.webp");
   min-width:30%;
   height:30vh;
   background-size:cover;
@@ -234,11 +234,11 @@ h1 {
 
     
   #banner3 .banner-box2{
-    background-image:url("/img/women/activewear/acc7.avif");
+    background-image:url("../img/women/activewear/acc7.avif");
   }
   
   #banner3 .banner-box3{
-    background-image:url("/img/women/activewear/acc4.avif");
+    background-image:url("../img/women/activewear/acc4.avif");
   }
   
   #banner3 h2{
@@ -261,7 +261,7 @@ h1 {
 
     <script>
         
-        fetch('/frontendwomen/womennav.html')
+        fetch('../frontendwomen/womennav.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header').innerHTML = data;
@@ -277,10 +277,10 @@ h1 {
     const heroSection = document.querySelector('.hero1');
     const backgrounds = [
       
-        '/img/img1.jpg',
-        '/img/man.jpg',
-        '/img/women.jpg',
-        '/img/man.jpg'
+        '../img/img1.jpg',
+        '../img/man.jpg',
+        '../img/women.jpg',
+        '../img/man.jpg'
     ];
     let index = 0;
 
@@ -311,40 +311,23 @@ h1 {
         <div class="carousel">
           <div class="carousel-item">
             <a href="product.html" target="_blank">
-              <img src="img/sh6.jpg" alt="img-1">
+              <img src="../img/img6.jpg" alt="img-1">
             </a>
             <div class="details">Image 1 - Description or Price</div>
           </div>
           <div class="carousel-item">
             <a href="product.html" target="_blank">
-              <img src="img/b4.jpg" alt="img-2">
+              <img src="" alt="img-2">
             </a>
             <div class="details">Image 2 - Description or Price</div>
           </div>
           <div class="carousel-item">
             <a href="product.html" target="_blank">
-              <img src="img/acc6.avif" alt="img-3">
+              <img src="" alt="img-3">
             </a>
             <div class="details">Image 3 - Description or Price</div>
           </div>
-          <div class="carousel-item">
-            <a href="iemswipper.html" target="_blank">
-              <img src="img/ja7.avif" alt="img-4">
-            </a>
-            <div class="details">Image 4 - Description or Price</div>
-          </div>
-          <div class="carousel-item">
-            <a href="product.html" target="_blank">
-              <img src="img/ja13.avif" alt="img-5">
-            </a>
-            <div class="details">Image 5 - Description or Price</div>
-          </div>
-          <div class="carousel-item">
-            <a href="product.html" target="_blank">
-              <img src="images/img2.jpg" alt="img-6">
-            </a>
-            <div class="details">Image 6 - Description or Price</div>
-          </div>
+        
         </div>
         <button class="arrow right-arrow" onclick="scrollCarousel(1)">&#10095;</button>
       </div>
@@ -409,7 +392,7 @@ h1 {
 
 <script>
     
-    fetch('/frontend/footer.html')
+    fetch('../frontend/footer.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('footer').innerHTML = data;

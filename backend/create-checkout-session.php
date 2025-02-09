@@ -4,8 +4,14 @@ require '../vendor/autoload.php';
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
 
-// Set your secret key securely
-\Stripe\Stripe::setApiKey('sk_test_51QprK4HspNUtSzZSeLu1fLRzetLUk8I7uotk2Xlge9cuAuuSAEZxNkTnoKh1RcvTjHm6H7zrwX425g9sknQuzLwr00aG7tSPiM');
+// Set your secret key securely. Ideally, use environment variables or a secure vault
+$secret_key = getenv('STRIPE_SECRET_KEY');
+if (!$secret_key) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Stripe secret key not set.']);
+    exit;
+}
+\Stripe\Stripe::setApiKey($secret_key);
 
 header('Content-Type: application/json');
 
@@ -18,7 +24,7 @@ try {
                 'product_data' => [
                     'name' => 'Test Product',
                 ],
-                'unit_amount' => 5000, // ✅ Correct LKR (no cents system)
+                'unit_amount' => 5000, // Correct LKR (no cents system)
             ],
             'quantity' => 1,
         ]],
@@ -30,9 +36,9 @@ try {
     echo json_encode(['id' => $checkout_session->id]);
 } catch (\Stripe\Exception\ApiErrorException $e) {
     http_response_code(500);
-    echo json_encode(['error' => $e->getMessage()]);
+    echo json_encode(['error' => 'Stripe API error: ' . $e->getMessage()]);
 } catch (Exception $e) {
     http_response_code(500);
-    echo json_encode(['error' => $e->getMessage()]);
+    echo json_encode(['error' => 'General error: ' . $e->getMessage()]);
 }
 ?>

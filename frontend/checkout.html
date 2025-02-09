@@ -16,7 +16,7 @@
 
         document.getElementById("checkout-button").addEventListener("click", async () => {
             try {
-                const response = await fetch("/backend/create-checkout-session.php", { method: "POST" });
+                const response = await fetch("/fashionlifestyle/backend/create-checkout-session.php", { method: "POST" });
                 const session = await response.json();
 
                 if (!session.id) {

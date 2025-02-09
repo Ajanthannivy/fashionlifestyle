@@ -1,10 +1,9 @@
 <?php
 require '../vendor/autoload.php';
 
-//use Stripe\Stripe;
-//use Stripe\Checkout\Session;
-echo "Debug Test";
-?>
+use Stripe\Stripe;
+use Stripe\Checkout\Session;
+
 // Set your secret key securely
 \Stripe\Stripe::setApiKey('sk_test_51QprK4HspNUtSzZSeLu1fLRzetLUk8I7uotk2Xlge9cuAuuSAEZxNkTnoKh1RcvTjHm6H7zrwX425g9sknQuzLwr00aG7tSPiM');
 

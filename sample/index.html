@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Store Checkout</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    color: #666;
+}
+
+button {
+    background-color: #6772e5;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #040c37;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Fashion Store</h1>
+    <p>Click below to proceed with payment.</p>
+    <button id="checkout-button">Checkout</button>
+    <script>
+        document.getElementById('checkout-button').addEventListener('click', async () => {
+    const response = await fetch('checkout.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'}
+    });
+    const { clientSecret } = await response.json();
+    const stripe = Stripe('pk_test_51QprK4HspNUtSzZSj4kVoiyruYK66vOuxaAHjpIEaWdOrmMv7YhaUknLza3SY9A5xmycyLJQqQtrvA65nr3oCfpu005JCbQZCj');
+    const { error } = await stripe.redirectToCheckout({
+        sessionId: clientSecret
+    });
+    if (error) console.error(error);
+});
+    </script>
+</body>
+</html>

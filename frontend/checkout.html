@@ -15,13 +15,21 @@
         const stripe = Stripe("pk_test_51QprK4HspNUtSzZSj4kVoiyruYK66vOuxaAHjpIEaWdOrmMv7YhaUknLza3SY9A5xmycyLJQqQtrvA65nr3oCfpu005JCbQZCj");
 
         document.getElementById("checkout-button").addEventListener("click", async () => {
-            const response = await fetch("create-checkout-session.php", { method: "POST" });
-            const session = await response.json();
+            try {
+                const response = await fetch("/backend/create-checkout-session.php", { method: "POST" });
+                const session = await response.json();
 
-            const result = await stripe.redirectToCheckout({ sessionId: session.id });
+                if (!session.id) {
+                    throw new Error("Session ID missing! Check your backend.");
+                }
 
-            if (result.error) {
-                alert(result.error.message);
+                const result = await stripe.redirectToCheckout({ sessionId: session.id });
+
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            } catch (error) {
+                alert("Payment Error: " + error.message);
             }
         });
     </script>

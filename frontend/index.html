@@ -141,19 +141,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-  
-
         <div class="top-bar">
             <a href="#">Marketplace</a>
             <a href="#">Help &amp; FAQs</a>
@@ -175,6 +162,41 @@
             </div>
            
 
+
+
+            <script>//sigin logout script
+              document.addEventListener("DOMContentLoaded", function () {
+                  const loginLink = document.getElementById("login-link");
+                  const joinLink = document.getElementById("join-link");
+                  const logoutLink = document.getElementById("logout-link");
+                  const authSection = document.getElementById("auth-section");
+                  
+                  function checkLoginStatus() {
+                      if (localStorage.getItem("loggedIn") === "true") {
+                          authSection.style.display = "none";
+                          logoutLink.style.display = "block";
+                      } else {
+                          authSection.style.display = "block";
+                          logoutLink.style.display = "none";
+                      }
+                  }
+      
+                  loginLink.addEventListener("click", function () {
+                      localStorage.setItem("loggedIn", "true");
+                      checkLoginStatus();
+                  });
+      
+                  logoutLink.addEventListener("click", function () {
+                      localStorage.removeItem("loggedIn");
+                      checkLoginStatus();
+                  });
+      
+                  checkLoginStatus();
+              });
+          </script>
+
+
+
             <div class="navbar1">
             
                 <div class="dropdown">
@@ -183,9 +205,12 @@
                       <div class="close">
                           <i class="fas fa-times"></i>
                       </div>
-                      <div class="header">
-                          <a href="../frontend/customerlogin.html">Sign In</a> | <a href="../frontend/customerjoin.html">Join</a>
+                      <div class="header" id="auth-section">
+                          <a href="../frontend/customerlogin.html" id="login-link">Sign In</a> |
+                           <a href="../frontend/customerjoin.html" id="join-link">Join</a>
                       </div>
+
+
                       <a href="../frontend/account.html" class="menu-item">
                           <i class="fas fa-user"></i> My Account
                       </a>

@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wolfmania - Add Men's Dress</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <style>
+       body {
+           background-color: #f3f4f6;
+           font-family: 'Arial', sans-serif;
+       }
+       .product-card {
+           transition: transform 0.3s ease-in-out;
+       }
+       .product-card:hover {
+           transform: scale(1.05);
+       }
+       input, button {
+           transition: all 0.2s ease-in-out;
+       }
+       input:focus {
+           border-color: #4299e1;
+           box-shadow: 0 0 5px rgba(66, 153, 225, 0.5);
+       }
+       .btn-red {
+           background-color: #dc2626;
+           color: white;
+           font-weight: bold;
+           padding: 10px;
+           border-radius: 5px;
+           text-align: center;
+           display: block;
+           width: 100%;
+       }
+       .btn-red:hover {
+           background-color: #b91c1c;
+       }
+       .btn-blue {
+           background-color: #2563eb;
+           color: white;
+           font-weight: bold;
+           padding: 10px;
+           border-radius: 5px;
+           text-align: center;
+           display: block;
+           width: 100%;
+       }
+       .btn-blue:hover {
+           background-color: #1e40af;
+       }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto mt-8 max-w-md">
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h1 class="text-2xl font-bold mb-6 text-center">Add Men's Dress</h1>
+            <form action="add_dress.php" method="POST" enctype="multipart/form-data">
+                <div class="mb-4">
+                    <label for="dress-category" class="block text-gray-700 text-sm font-bold mb-2">Dress Category</label>
+                    <select id="dress-category" name="dress_category" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                        <option value="Casual">Casual</option>
+                        <option value="Formal">Formal</option>
+                        <option value="Traditional">Traditional</option>
+                        <option value="Sportswear">Sportswear</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="product-price" class="block text-gray-700 text-sm font-bold mb-2">Price</label>
+                    <input id="product-price" name="product_price" type="number" placeholder="Enter price" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                </div>
+                <div class="mb-4">
+                    <label for="product-image" class="block text-gray-700 text-sm font-bold mb-2">Choose Image</label>
+                    <input id="product-image" name="product_image" type="file" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                </div>
+                <div class="mb-4">
+                    <button type="submit" class="btn-red">Add Dress</button>
+                </div>
+            </form>
+            <div class="mt-4">
+                <a href="dresses.php" class="btn-blue">View Dresses</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

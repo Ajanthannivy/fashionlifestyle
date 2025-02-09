@@ -1,13 +1,15 @@
 :root {
-  --color-light-pink: #afdde5;
-  --color-pink: #964734;
-  --color-dark-pink: #0fa4af;
-  --color-deep-purple: #024950;
+ 
+  --color-light-pink:#f0e2df ;
+  --color-pink:#afdde5;
+  --color-dark-pink: #c3dee0;
+  --color-deep-purple: black;
   --color-black:  #000000;
   --color-white: #ffffff;
   --color-border: #eee;
-}
-
+  --color-grey: #2e3944;
+  }
+  
 
 body {
   margin: 0;

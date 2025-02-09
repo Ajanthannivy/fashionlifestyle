@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wolfmania - Add Product</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <style>
+       /* General Styles */
+body {
+    background-color: #f3f4f6;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Card Styles */
+.product-card {
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+/* Form Elements */
+input, button {
+    transition: all 0.2s ease-in-out;
+}
+
+input:focus {
+    border-color: #4299e1;
+    box-shadow: 0 0 5px rgba(66, 153, 225, 0.5);
+}
+
+/* Button Styles */
+.btn-red {
+    background-color: #dc2626;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+
+.btn-red:hover {
+    background-color: #b91c1c;
+}
+
+.btn-blue {
+    background-color: #2563eb;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+
+.btn-blue:hover {
+    background-color: #1e40af;
+}
+
+    </style>
+</head>
+<body class="bg-gray-100">
+    
+    
+    <div class="container mx-auto mt-8 max-w-md">
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h1 class="text-2xl font-bold mb-6 text-center">Add Product Information</h1>
+            <form action="addwomendress.php" method="POST" enctype="multipart/form-data">
+                <div class="mb-4">
+                    <label for="womendress Name" class="block text-gray-700 text-sm font-bold mb-2">womendress Name</label>
+                    <input id="womendress Name" name="product_name" type="text" placeholder="Enter product name" 
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="product-price" class="block text-gray-700 text-sm font-bold mb-2">Product Price</label>
+                    <input id="product-price" name="product_price" type="number" placeholder="Enter product price" 
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="product-image" class="block text-gray-700 text-sm font-bold mb-2">Choose Product Image</label>
+                    <input id="product-image" name="product_image" type="file" 
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                </div>
+                
+                <div class="mb-4">
+                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-full">Add Product</button>
+                </div>
+            </form>
+            <div class="mt-4">
+                <a href="womendresss.php" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full text-center block">Go to Website</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

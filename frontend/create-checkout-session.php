@@ -4,7 +4,7 @@ require '../vendor/autoload.php'; // ✅ Always on top
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
 
-Stripe::setApiKey('sk_test_51QprK4HspNUtSzZSj4kVoiyruYK66vOuxaAHjpIEaWdOrmMv7YhaUknLza3SY9A5xmycyLJQqQtrvA65nr3oCfpu005JCbQZCj');
+\Stripe\Stripe::setApiKey('sk_test_51QprK4HspNUtSzZSeLu1fLRzetLUk8I7uotk2Xlge9cuAuuSAEZxNkTnoKh1RcvTjHm6H7zrwX425g9sknQuzLwr00aG7tSPiM');
 
 header('Content-Type: application/json');
 
@@ -13,11 +13,11 @@ try {
         'payment_method_types' => ['card'],
         'line_items' => [[
             'price_data' => [
-                'currency' => 'usd',
+                'currency' => 'lkr',
                 'product_data' => [
                     'name' => 'Test Product',
                 ],
-                'unit_amount' => 5000, // $50.00 in cents
+                'unit_amount' => 5000, 
             ],
             'quantity' => 1,
         ]],

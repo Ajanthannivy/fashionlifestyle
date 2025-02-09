@@ -3,7 +3,7 @@
 $host = "localhost";
 $username = "root";
 $password = "";
-$database = "fashion";
+$database = "fashiondress";
 
 $conn = new mysqli($host, $username, $password, $database);
 
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("sds", $product_name, $product_price, $target_file);
 
             if ($stmt->execute()) {
-                echo "<script>alert('Product added successfully!'); window.location.href='index.html';</script>";
+                echo "<script>alert('Product added successfully!'); window.location.href='product.php';</script>";
             } else {
                 echo "Database error: " . $stmt->error;
             }

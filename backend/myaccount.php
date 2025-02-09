@@ -197,7 +197,7 @@ $email = isset($_GET['email']) ? $_GET['email'] : '';
                     </a>
                 </li>
                 <li>
-                <form action="logout.php" method="post">
+                <form action="index.html" method="post">
     <button type="submit">
         <i class="fas fa-sign-out-alt"></i> Sign out
     </button>

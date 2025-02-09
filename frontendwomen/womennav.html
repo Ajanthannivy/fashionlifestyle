@@ -23,36 +23,12 @@
             <a href="../frontendmen/men.html">MEN</a>
         </div>
        
-		
-		<div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Search for items and brands">
-    <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+	
+<div class="search-bar">
+  <input type="text" placeholder="Search for items and brands" />
 </div>
-<div id="searchResults"></div>
 
-<script>
-function searchProducts() {
-    let query = document.getElementById("searchInput").value;
-    if (query.length > 2) { 
-        fetch("/backend/search.php?query=" + query)
-        .then(response => response.json())
-        .then(data => {
-            let resultsDiv = document.getElementById("searchResults");
-            resultsDiv.innerHTML = "";
-            if (data.length > 0) {
-                data.forEach(product => {
-                    resultsDiv.innerHTML += `<div class="search-item">
-                        <img src="${product.image_url}" alt="${product.name}" width="50">
-                        <span>${product.name} - ${product.category} - $${product.price}</span>
-                    </div>`;
-                });
-            } else {
-                resultsDiv.innerHTML = "<p>No results found</p>";
-            }
-        });
-    }
-}
-</script>
+
         
         <div class="navbar1">
             

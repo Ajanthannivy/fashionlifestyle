@@ -3,7 +3,7 @@
 $host = "localhost";
 $username = "root";
 $password = "";
-$database = "fashion";
+$database = "fashiondress";
 
 $conn = new mysqli($host, $username, $password, $database);
 
@@ -31,17 +31,7 @@ if ($conn->connect_error) {
     </style>
 </head>
 <body class="bg-gray-100">
-    <nav class="bg-gray-800 p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="text-white text-lg font-semibold">Wolfmania</div>
-            <div class="space-x-4">
-                <a class="text-gray-300 hover:text-white" href="home.html">Home</a>
-                <a class="text-gray-300 hover:text-white" href="product.php">Products</a>
-                <a class="text-gray-300 hover:text-white" href="categories.html">Categories</a>
-                <a class="text-gray-300 hover:text-white" href="checkout.html">Checkout</a>
-            </div>
-        </div>
-    </nav>
+    
 
     <header class="relative h-96">
         <img alt="Fashion banner showing a stylish model in trendy clothing" class="absolute inset-0 w-full h-full object-cover" height="960" src="https://storage.googleapis.com/a1aa/image/UwAoVDJnHnmu5TCt8NwIIgmlH9T3puQ21ab2-iOyOZM.jpg" width="1920"/>

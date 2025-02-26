@@ -1,0 +1,232 @@
+<html>
+ <head>
+  <title>
+   Payment Page
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .payment-section, .summary-section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .payment-section {
+            width: 65%;
+        }
+        .summary-section {
+            width: 30%;
+        }
+        h2 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .address, .payment-type {
+            margin-bottom: 20px;
+        }
+        .address p, .payment-type p {
+            margin: 5px 0;
+        }
+        .change-button {
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .payment-type img {
+            width: 50px;
+            vertical-align: middle;
+        }
+        .info-icon {
+            font-size: 20px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        .payment-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .accepted-cards img {
+            width: 40px;
+            margin-right: 10px;
+        }
+        .paypal-button {
+            background-color: #ffc439;
+            color: #003087;
+            padding: 15px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 5px;
+        }
+        .summary-section img {
+            width: 100px;
+            margin-bottom: 10px;
+        }
+        .summary-section p {
+            margin: 5px 0;
+        }
+        .summary-section .item-title {
+            font-weight: bold;
+        }
+        .summary-section .item-price {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .summary-section .total {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .payment-section, .summary-section {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+  </style>
+ </head>
+ <body>
+  <div class="container">
+   <div class="payment-section">
+    <h2>
+     PAYMENT
+    </h2>
+    <div class="address">
+     <div class="section-title">
+      BILLING ADDRESS
+     </div>
+     <p>
+      nivy nivy
+     </p>
+     <p>
+      No: 178, sivasuntharam Road , vaddakkachchi.
+     </p>
+     <p>
+      Kilinochchi
+     </p>
+     <p>
+      sri lanka
+     </p>
+     <p>
+      44000
+     </p>
+     <p>
+      Sri Lanka
+     </p>
+     <p>
+      0740036317
+     </p>
+     <button class="change-button">
+      CHANGE
+     </button>
+    </div>
+    <hr/>
+    <div class="payment-type">
+     <div class="section-title">
+      PAYMENT TYPE
+     </div>
+     <div class="payment-info">
+      <img alt="PayPal logo" height="50" src="https://storage.googleapis.com/a1aa/image/1jmXQ0aihPzNMl4RFNZbmQz-BYUYCVaTYV6xA4PiZvQ.jpg" width="50"/>
+      <p>
+       PayPal
+      </p>
+     </div>
+     <button class="change-button">
+      CHANGE
+     </button>
+    </div>
+    <div class="payment-info">
+     <i class="fas fa-info-circle info-icon">
+     </i>
+     <p>
+      Hit the PayPal button below to sign into PayPal and confirm your payment.
+     </p>
+    </div>
+    <div class="accepted-cards">
+     <p>
+      WE ACCEPT:
+     </p>
+     <img alt="Visa logo" height="40" src="https://storage.googleapis.com/a1aa/image/zT_l75P-gtqX9ii5vUJl2YVtjHhQLHTudJZivqeIb1o.jpg" width="40"/>
+     <img alt="MasterCard logo" height="40" src="https://storage.googleapis.com/a1aa/image/cL8q54p_FtJDbimgbAiAA_tDXS59VgSWpikEviYX1gs.jpg" width="40"/>
+     <img alt="PayPal logo" height="40" src="https://storage.googleapis.com/a1aa/image/1jmXQ0aihPzNMl4RFNZbmQz-BYUYCVaTYV6xA4PiZvQ.jpg" width="40"/>
+     <img alt="American Express logo" height="40" src="https://storage.googleapis.com/a1aa/image/JcqvPIXSosuy_r1UpGVgFiyQmvLjeeDNXBOC3SGc1Wc.jpg" width="40"/>
+     <img alt="Visa Electron logo" height="40" src="https://storage.googleapis.com/a1aa/image/JMXOaMuau6_wph0op7qmPXdbu2LSZsRUPayypXkux54.jpg" width="40"/>
+    </div>
+    <button class="paypal-button">
+     Pay with
+     <span style="color: #003087;">
+      PayPal
+     </span>
+    </button>
+   </div>
+   <div class="summary-section">
+    <h2>
+     1 ITEM
+     <span style="float: right;">
+      Edit
+     </span>
+    </h2>
+    <img alt="e.l.f. Pout Clout Lip Plumping Pen - Red My Mind" height="100" src="https://storage.googleapis.com/a1aa/image/MN6JZYZ832_vY3LmCxTMRJ735HHJ6G7J3y9ZH7__oq4.jpg" width="100"/>
+    <p class="item-title">
+     £8.50
+    </p>
+    <p>
+     e.l.f. Pout Clout Lip Plumping Pen - Red My Mind
+    </p>
+    <p class="item-title">
+     Red My Mind
+    </p>
+    <p>
+     No Size
+    </p>
+    <p>
+     Qty: 1
+    </p>
+    <hr/>
+    <p>
+     Subtotal
+     <span style="float: right;">
+      £8.50
+     </span>
+    </p>
+    <p>
+     Delivery
+     <span style="float: right;">
+      £10.00
+     </span>
+    </p>
+    <p class="total">
+     TOTAL TO PAY
+     <span style="float: right;">
+      £18.50
+     </span>
+    </p>
+   </div>
+  </div>
+ </body>
+</html>

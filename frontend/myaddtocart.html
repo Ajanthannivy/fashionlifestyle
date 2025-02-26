@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add to Cart</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .containerr {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .image-section {
+            flex: 1 1 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .container {
+            flex: 1 1 50%;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        select, input[type="number"] {
+            margin-bottom: 20px;
+            padding: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: block;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="containerr">
+        <div class="image-section">
+            <img src="https://storage.googleapis.com/a1aa/image/5p6orHc78uYgE5gNQkozfDW8fEoKIVhXa7w0VP5fxVDlbzNoA.jpg" 
+            alt="A woman with styled hair wearing a white dress">
+        </div>
+        <div class="container">
+            <h1>Kaila Dress Es</h1>
+            <p>Price: $550.00</p>
+            <div>
+                <label for="size">Size:</label>
+                <select id="size">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                </select>
+            </div>
+            <div>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" min="1" value="1">
+            </div>
+            <button onclick="addToBag()">Add to Bag</button>
+            <a href="mybag.html">Go to My Bag</a>
+        </div>
+    </div>
+
+    <script>
+        let bagItems = JSON.parse(localStorage.getItem('bagItems')) || [];
+
+        function addToBag() {
+            const size = document.getElementById('size').value;
+            const quantity = parseInt(document.getElementById('quantity').value);
+            const price = 550.00;
+
+            const item = {
+                description: 'Kaila Dress Es',
+                size,
+                quantity,
+                price,
+            };
+
+            bagItems.push(item);
+            localStorage.setItem('bagItems', JSON.stringify(bagItems));
+            alert('Item added to bag!');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<html>
+<head>
+    <title>Product Page</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fff;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: #fff;
+        }
+        .image-section {
+            flex: 1;
+            padding-right: 20px;
+        }
+        .image-section img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .details-section {
+            flex: 1;
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        h1 {
+            font-size: 24px;
+            margin: 0 0 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .color, .size {
+            margin: 15px 0;
+        }
+        .color img {
+            width: 50px;
+            height: auto;
+            margin-right: 5px;
+            border-radius: 3px;
+        }
+        .size select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn {
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        .add-to-bag {
+            background-color: #008000;
+            color: #fff;
+        }
+        .add-to-bag:hover {
+            background-color: #006400;
+        }
+        .wishlist {
+            background-color: #f0f0f0;
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .wishlist:hover {
+            background-color: #e0e0e0;
+        }
+        .wishlist i {
+            margin-right: 10px;
+        }
+        .delivery-info {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .delivery-info i {
+            margin-right: 10px;
+        }
+        .delivery-info a {
+            color: #000;
+            text-decoration: none;
+        }
+        .delivery-info a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .image-section, .details-section {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Image Section -->
+        <div class="image-section">
+            <img src="https://storage.googleapis.com/a1aa/image/lR8aMNU31m3-ckKLwEhm2tyqrKopD0cJBh9OR8R3c0w.jpg" alt="Noisy May knitted jumper leopard">
+        </div>
+
+        <!-- Product Details Section -->
+        <div class="details-section">
+            <h1>
+                Noisy May Knitted Jumper
+                <span>
+                    <i class="fas fa-share-alt" title="Share"></i>
+                    <i class="fas fa-link" title="Copy link"></i>
+                </span>
+            </h1>
+
+            <div class="price">£40.00</div>
+
+            <div class="color">
+                <strong>COLOUR:</strong> Nomad BLACK LEO
+                <div>
+                    <img src="https://storage.googleapis.com/a1aa/image/Q-e_TA9jPQRqCT0Qadsl3lbXIBiCCX39Gr4B9ImqdsQ.jpg" alt="Front View">
+                    <img src="https://storage.googleapis.com/a1aa/image/mCKCiKrkkQNVEKSdIzMxNDgKER59jtGc7KbIhMUhrKE.jpg" alt="Back View">
+                </div>
+            </div>
+
+            <div class="size">
+                <strong>SIZE:</strong> <a href="#">Find your Fit Assistant size</a>
+                <select>
+                    <option>Please select</option>
+                    <option>XS</option>
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                    <option>XL</option>
+                </select>
+            </div>
+
+            <div class="btn add-to-bag">ADD TO BAG</div>
+            <div class="btn wishlist"><i class="fas fa-heart"></i> ADD TO WISHLIST</div>
+
+            <div class="delivery-info">
+                <i class="fas fa-truck"></i>
+                <div>
+                    Free delivery on qualifying orders. <br>
+                    <a href="#">View our Delivery & Returns Policy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

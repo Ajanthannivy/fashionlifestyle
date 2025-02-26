@@ -9,17 +9,16 @@
  </head>
  <body>
   
-  <div class="breadcrumb">
-    <div id="header"></div>
+    <div id="header">
     <script>
- 
-        fetch('../frontendwomen/womennav.html')
+         fetch('../frontendwomen/womennav.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header').innerHTML = data;
             })
             .catch(error => console.error('Error loading the header:', error));
     </script>
+    </div>
  <div class="breadcrumb" id="breadcrumb"></div>
         
  <script>

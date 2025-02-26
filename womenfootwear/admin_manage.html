@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage Women's Trending</title>
+    
+</head>
+<body>
+
+    <h2>Manage Women's Footwear </h2>
+
+    <h3>Add New  product</h3>
+    <form action="upload.php" method="POST" enctype="multipart/form-data">
+        <label>Product Name:</label>
+        <input type="text" name="name" required><br><br>
+
+        <label>Price:</label>
+        <input type="number" name="price" required><br><br>
+
+        <label>Color:</label>
+        <input type="text" name="color" required><br><br>
+
+        <label>Category:</label>
+        <select name="category">
+            <option value="Heels">Heels</option>
+            <option value="Shoes">Shoes</option>
+            <option value="Sandals">Sandals</option>
+            <option value="Boots">Boots</option>
+            <option value="Running Trainers">Running Trainers</option>
+            
+           
+       </select><br><br>
+        
+        
+
+        <label>Upload Image:</label>
+        <input type="file" name="image" required><br><br>
+
+        <button type="submit" name="submit">Add product</button>
+    </form>
+
+    <hr>
+
+    
+    <h3>Existing Products</h3>
+    <div id="clothList"></div>
+
+    <script>
+        
+        fetch('fetch.php')
+        .then(response => response.json())
+        .then(data => {
+            let clothList = document.getElementById('clothList');
+            data.forEach(cloth => {
+                let clothDiv = document.createElement('div');
+                clothDiv.innerHTML = `
+                    <p><strong>${cloth.cloth_name}</strong> | ₹${cloth.price} | ${cloth.color} | ${cloth.category}</p>
+                    <img src="${cloth.image}" alt="${cloth.cloth_name}" width="100"><br><br>
+                    <button onclick="editCloth(${cloth.id})">Edit</button>
+                    <button onclick="deleteCloth(${cloth.id})">Delete</button>
+                    <hr>
+                `;
+                clothList.appendChild(clothDiv);
+            });
+        });
+
+       
+        function deleteCloth(id) {
+            if (confirm("Are you sure you want to delete this product?")) {
+                fetch('delete.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id: id })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    location.reload();  
+                })
+                .catch(error => console.error('Error deleting product:', error));
+            }
+        }
+
+       
+        function editCloth(id) {
+            window.location.href = `edit.php?id=${id}`;
+        }
+    </script>
+
+</body>
+</html>

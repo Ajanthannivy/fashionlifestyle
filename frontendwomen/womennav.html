@@ -14,102 +14,90 @@
     </div>
     
     <div class="nav-bar">
-      <header>
-        <a href="#" class="logo"><i class='bx bx-walk'></i>NC<span>FASHION</span></a>
-      </header>
-             
-        <div class="menu">
-            <a href="../frontendwomen/women.html">WOMEN</a>
-            <a href="../frontendmen/men.html">MEN</a>
+      <div class="logo">
+      <h1>NC Fashion</h1></div>
+          <div class="menu">
+              <a href="../frontendwomen/women.html">WOMEN</a>
+              <a href="../frontendmen/men.html">MEN</a>
+          </div>
+       <div class="search-bar">
+        <input type="text" placeholder="Search for items and brands" />
+       </div>
+          
+         <div class="navbar1">
+              <div class="dropdown">
+                  <div class="icon"><i class="fas fa-user"></i></div>
+                  <div class="dropdown-content" id="user-dropdown">
+                      <div class="close"><i class="fas fa-times"></i></div>
+                      <div class="header" id="auth-section">
+                          <a href="login.php" id="login-link">Sign In</a> 
+                          
+                      </div>
+                      <a href="myaccount.php" class="menu-item"><i class="fas fa-user"></i> My Account</a>
+                      <a href="#" class="menu-item"><i class="fas fa-calendar-alt"></i> My Orders</a>
+                      <a href="#" class="menu-item"><i class="fas fa-question-circle"></i> Returns Information</a>
+                      <a href="#" class="menu-item"><i class="fas fa-comment-dots"></i> Contact Preferences</a>
+                      <a href="#" id="logout-link" class="menu-item" style="display: none;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                  </div>
+         </div>
+  
+  
+            <!-- Wishlist -->
+            <div class="dropdown">
+              <div class="icon"><i class="fas fa-heart"></i></div>
+              <div class="dropdown-content">
+                  <div class="close"><i class="fas fa-times"></i></div>
+                  <a href="../frontend/wishlist.html" class="menu-item"><i class="fas fa-star"></i> Saved Products</a>
+                  <a href="#" class="menu-item"><i class="fas fa-calendar-alt"></i> My Orders</a>
+              </div>              
+          </div>
+  
+          <!-- Shopping Bag -->
+          <div class="dropdown">
+              <div class="icon"><i class="fas fa-shopping-bag"></i></div>
+              <div class="dropdown-content">
+                  <div class="close"><i class="fas fa-times"></i></div>
+                  <a href="../frontend/account.html" class="menu-item"><i class="fas fa-user"></i> My Account</a>
+                  <a href="#" class="menu-item"><i class="fas fa-calendar-alt"></i> My Orders</a>
+              </div>
+          </div>
         </div>
        
-	
-<div class="search-bar">
-  <input type="text" placeholder="Search for items and brands" />
-</div>
-
-
-        
-        <div class="navbar1">
-            
-          <div class="dropdown">
-            <div class="icon"><i class="fas fa-user"></i></div>
-            <div class="dropdown-content">
-                <div class="close">
-                    <i class="fas fa-times"></i>
-                </div>
-                <div class="header">
-                    <a href="../frontend/customerlogin.html">Sign In</a> | <a href="">Join</a>
-                </div>
-                <a href="../frontend/account.html" class="menu-item">
-                    <i class="fas fa-user"></i> My Account
-                </a>
-                <a href="../frontend/cart.html" class="menu-item">
-                    <i class="fas fa-calendar-alt"></i> My Orders
-                </a>
-                <a href="#" class="menu-item">
-                    <i class="fas fa-question-circle"></i> Returns Information
-                </a>
-                <a href="#" class="menu-item">
-                    <i class="fas fa-comment-dots"></i> Contact Preferences
-                </a>
-                
-            </div>
-            
-          </div>
-
-          <div class="dropdown">
-
-            
-
-            
-            
-            <div class="icon"><i class="fas fa-heart"></i></div>
-         
-            <div class="dropdown-content">
-               
-                <a href="../frontend/wishlist.html" class="menu-item">
-                    <i class="fas fa-user"></i> Wishlist
-                </a>
-                <a href="../frontend/cart.html" class="menu-item">
-                    <i class="fas fa-calendar-alt"></i> Cart
-                </a>
-               
-                
-
-            </div>
-            
-          </div>
-
-          <div class="dropdown">
-            <div class="icon"><i class="fas fa-shopping-bag"></i></div>
-            <div class="dropdown-content">
-             
-                <a href="../frontend/account.html" class="menu-item">
-                    <i class="fas fa-user"></i> My Account
-                </a>
-                <a href="#" class="menu-item">
-                    <i class="fas fa-calendar-alt"></i> My Orders
-                </a>
+      </div>
+  
+      <script>
+          document.addEventListener("DOMContentLoaded", function () {
+              const loginLink = document.getElementById("login-link");
+              const logoutLink = document.getElementById("logout-link");
+              const authSection = document.getElementById("auth-section");
               
-                
-            </div>
-            
-          </div>
-          
-         
-          </div>
-          
-    
-  </div>
-
-
-
+              function checkLoginStatus() {
+                  if (localStorage.getItem("loggedIn") === "true") {
+                      authSection.style.display = "none";
+                      logoutLink.style.display = "block";
+                  } else {
+                      authSection.style.display = "block";
+                      logoutLink.style.display = "none";
+                  }
+              }
+  
+              loginLink.addEventListener("click", function () {
+                  localStorage.setItem("loggedIn", "true");
+                  checkLoginStatus();
+              });
+  
+              logoutLink.addEventListener("click", function () {
+                  localStorage.removeItem("loggedIn");
+                  checkLoginStatus();
+              });
+  
+              checkLoginStatus();
+          });
+      </script>
 
     <div class="sub-header">
       <button class="toggle-btn" onclick="toggleNav()">☰</button>
       <div class="nav">
-
 
         <div class="dropdown">
           <a href="#">New in</a>
@@ -143,11 +131,6 @@
             </div>
           </div>
         </div>
-
-
-
-
-
 
 
 
@@ -228,11 +211,6 @@
         </div>
         </div>
 
-        
-  
-  
-  
-  
         <div class="dropdown">
           <a href="#">Accessories</a>
   
@@ -248,7 +226,6 @@
                   <li><a href="../frontendwomen/accessories.html#hair">Hair Accessories</a></li>
                   <li><a href="../frontendwomen/accessories.html#sunglass">Sunglass</a></li>
                   <li><a href="../frontendwomen/accessories.html#bags">Bags & purses</a></li>
-                 
                 </ul>
               </div>
               <div class="column">
@@ -341,14 +318,9 @@
                   <li><a href="../frontendwomen/activewear.html#Trainers"><img src="../img/women/activewear/swim.jpeg" alt="clothing View All" /> SWIM</a></li>
                   <li><a href="../frontendwomen/activewear.html#Trainers"><img src="../img/women/clothes/tt4.jpg" alt="Tops View All" /> FOOTBALL</a></li>
                   <li><a href="../frontendwomen/footwear.html#shoes"><img src="../img/women/footwear/sh7.jpg" alt=" shoes All" /> GYM </a></li>
-                 
-                  
-                </ul>
+                                </ul>
               </div>
-  
-              
-  
-            </div>
+              </div>
           </div>
         </div>
   
@@ -415,10 +387,6 @@
   
   
   
-  
-  
-       
-  
           <div class="dropdown">
           <a href="#" style="color: #f35252;">Sale</a>
           <div class="dropdown-content">
@@ -437,33 +405,14 @@
                   <li><a href="#">Face + Body</a></li>
                 </ul>
               </div>
-              <div class="column">
-                <h2>SHOP WINTER</h2>
-                <ul>
-                  <li><a href="#"><img src="" alt="Winter View All" /> View all</a></li>
-                  <li><a href="#"><img src="" alt="Winter View All" /> Bestsellers</a></li>
-                  <li><a href="#"><img src="" alt="Winter View All" />  dresses</a></li>
-                  <li><a href="#"><img src="" alt="Winter View All" /> Coats</a></li>
-                  <li><a href="#"><img src="" alt="Winter View All" /> Accessories</a></li>
-                  <li><a href="#"><img src="" alt="Winter View All" /> Boots</a></li>
-                </ul>
-              </div>
+             
             </div>
           </div>
         </div>
   
   
-        
-      
-
-
-
-
-
    
-    <div class="back-to-top" onclick="scrollToTop()">
-        <i class="fas fa-chevron-up"></i>
-    </div>
+   
 
     <script>
         // Back-to-Top Button Logic
@@ -481,19 +430,12 @@
         }
     </script>
 
-
-
-
-
-
 <script>
-    function toggleNav() {
-      const nav = document.querySelector('.sub-header .nav');
-      nav.classList.toggle('show');
-    }
-  </script>
-
- 
+  function toggleNav() {
+    const nav = document.querySelector('.sub-header .nav');
+    nav.classList.toggle('show');
+  }
+</script>
 
 </body>
 </html>

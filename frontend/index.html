@@ -4,110 +4,99 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="../css/index.css">
-    <style>
-     
-.menu a {
-  text-decoration: none;
-  color: var(--color-white);
-  margin: 0 10px;
-  padding: 12px 20px;
-  font-size: 14px;
-  border-radius: 0px;
-  transition: background-color 0.3s ease;
-}
-
-.menu a:hover {
-  background-color: var(--color-light-pink);
-  color: var(--color-deep-purple)
-}
-
-.menu a.active {
-  background-color: red; /* Red background for the active menu */
-  color: white;
-}
-
-.sub-header a {
-  text-decoration: none;
-  color: white;
-  margin-left:0 10px;
-  padding: 12px 20px;
-  font-size: 14px;
-  border-radius: 0px;
-  transition: background-color 0.3s ease;
-}
-.sub-header a:hover {
-  background-color:  var(--color-light-pink);
-  color: var(--color-deep-purple)
-}
-      .contact-us {
-          position: fixed;
-          bottom: 20px;
-          left: 20px;
-          background-color: #ff4d4d;
-          color: white;
-          padding: 10px 20px;
-          border-radius: 50px;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          transition: transform 0.3s ease-in-out;
-      }
-      .contact-us:hover {
-          transform: scale(1.1);
-      }
-      .contact-us span {
-          margin-left: 10px;
-      }
-
-
-      .modal {
-    display: none; 
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-}
-
-/* Modal Content */
-.modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 800px;
-    max-width: 90%;
-    position: relative;
-    animation: fadeIn 0.3s;
-}
-
-/* Close Button */
-.close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-/* Fade-in animation */
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
-}
-  </style>
+    <link rel="stylesheet" href="index.css">
+    
     
 </head>
 
-
-
     <body>
-   
+      <div class="top-bar">
+        <a href="#">Marketplace</a>
+        <a href="#">Help &amp; FAQs</a>
+    </div>
     
+    <div class="nav-bar">
+    <div class="logo">
+    <h1>NC Fashion</h1></div>
+        <div class="menu">
+            <a href="../frontendwomen/women.html">WOMEN</a>
+            <a href="../frontendmen/men.html">MEN</a>
+        </div>
+     <div class="search-bar">
+      <input type="text" placeholder="Search for items and brands" />
+     </div>
+        
+       <div class="navbar1">
+            <div class="dropdown">
+                <div class="icon"><i class="fas fa-user"></i></div>
+                <div class="dropdown-content" id="user-dropdown">
+                    <div class="close"><i class="fas fa-times"></i></div>
+                    <div class="header" id="auth-section">
+                        <a href="login.php" id="login-link">Sign In</a> 
+                        
+                    </div>
+                    <a href="myaccount.php" class="menu-item"><i class="fas fa-user"></i> My Account</a>
+                    <a href="#" class="menu-item"><i class="fas fa-calendar-alt"></i> My Orders</a>
+                    <a href="#" class="menu-item"><i class="fas fa-question-circle"></i> Returns Information</a>
+                    <a href="#" class="menu-item"><i class="fas fa-comment-dots"></i> Contact Preferences</a>
+                    <a href="#" id="logout-link" class="menu-item" style="display: none;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+       </div>
+
+
+          <!-- Wishlist -->
+          <div class="dropdown">
+            <div class="icon"><i class="fas fa-heart"></i></div>
+            <div class="dropdown-content">
+                <div class="close"><i class="fas fa-times"></i></div>
+                <a href="../frontend/wishlist.html" class="menu-item"><i class="fas fa-star"></i> Saved Products</a>
+                <a href="#" class="menu-item"><i class="fas fa-calendar-alt"></i> My Orders</a>
+            </div>              
+        </div>
+
+        <!-- Shopping Bag -->
+        <div class="dropdown">
+            <div class="icon"><i class="fas fa-shopping-bag"></i></div>
+            <div class="dropdown-content">
+                <div class="close"><i class="fas fa-times"></i></div>
+                <a href="../frontend/account.html" class="menu-item"><i class="fas fa-user"></i> My Account</a>
+                <a href="#" class="menu-item"><i class="fas fa-calendar-alt"></i> My Orders</a>
+            </div>
+        </div>
+      </div>
+     
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const loginLink = document.getElementById("login-link");
+            const logoutLink = document.getElementById("logout-link");
+            const authSection = document.getElementById("auth-section");
+            
+            function checkLoginStatus() {
+                if (localStorage.getItem("loggedIn") === "true") {
+                    authSection.style.display = "none";
+                    logoutLink.style.display = "block";
+                } else {
+                    authSection.style.display = "block";
+                    logoutLink.style.display = "none";
+                }
+            }
+
+            loginLink.addEventListener("click", function () {
+                localStorage.setItem("loggedIn", "true");
+                checkLoginStatus();
+            });
+
+            logoutLink.addEventListener("click", function () {
+                localStorage.removeItem("loggedIn");
+                checkLoginStatus();
+            });
+
+            checkLoginStatus();
+        });
+    </script>
+   
     <div class="contact-us" onclick="openChat('/frontend/chatbot.html')">
       &#128172; <span>Contact Us</span>
   </div>
@@ -117,8 +106,6 @@
           window.location.href = url; // Redirects to the chatbot page
       }
   </script>
-
-
 
 <!-- Chatbot Modal -->
 <div id="chatbotModal" class="modal">
@@ -139,125 +126,39 @@
   </script>
 
 
-
-
-        <div class="top-bar">
-            <a href="#">Marketplace</a>
-            <a href="#">Help &amp; FAQs</a>
-        </div>
-        
-        <div class="nav-bar">
-         <header>
-            <a href="#" class="logo"><i class='bx bx-walk'></i>NC<span>FASHION</span></a>
-          </header>
-                 
-       
-        
-            <div class="menu">
-                <a href="../frontendwomen/women.html">WOMEN</a>
-                <a href="../frontendmen/men.html">MEN</a>
-            </div>
-            <div class="search-bar">
-                <input type="text" placeholder="Search for items and brands" />
-            </div>
-           
-
-
-
-            <script>//sigin logout script
-              document.addEventListener("DOMContentLoaded", function () {
-                  const loginLink = document.getElementById("login-link");
-                  const joinLink = document.getElementById("join-link");
-                  const logoutLink = document.getElementById("logout-link");
-                  const authSection = document.getElementById("auth-section");
+<script>//sigin logout script
+ document.addEventListener("DOMContentLoaded", function () {
+    const loginLink = document.getElementById("login-link");
+    const joinLink = document.getElementById("join-link");
+    const logoutLink = document.getElementById("logout-link");
+    const authSection = document.getElementById("auth-section");
                   
-                  function checkLoginStatus() {
-                      if (localStorage.getItem("loggedIn") === "true") {
-                          authSection.style.display = "none";
-                          logoutLink.style.display = "block";
-                      } else {
-                          authSection.style.display = "block";
-                          logoutLink.style.display = "none";
-                      }
-                  }
+    function checkLoginStatus() {
+       if (localStorage.getItem("loggedIn") === "true") {
+           authSection.style.display = "none";
+            logoutLink.style.display = "block";
+           } else {
+              authSection.style.display = "block";
+            logoutLink.style.display = "none";
+           }
+   }
       
-                  loginLink.addEventListener("click", function () {
-                      localStorage.setItem("loggedIn", "true");
-                      checkLoginStatus();
-                  });
+    loginLink.addEventListener("click", function () {
+       localStorage.setItem("loggedIn", "true");
+          checkLoginStatus();
+          });
       
-                  logoutLink.addEventListener("click", function () {
-                      localStorage.removeItem("loggedIn");
-                      checkLoginStatus();
-                  });
+          logoutLink.addEventListener("click", function () {
+           localStorage.removeItem("loggedIn");
+           checkLoginStatus();
+            });
       
-                  checkLoginStatus();
-              });
-          </script>
-
-
-
-            <div class="navbar1">
-            
-                <div class="dropdown">
-                  <div class="icon"><i class="fas fa-user"></i></div>
-                  <div class="dropdown-content">
-                      <div class="close">
-                          <i class="fas fa-times"></i>
-                      </div>
-                      <div class="header" id="auth-section">
-                          <a href="../frontend/customerlogin.html" id="login-link">Sign In</a> |
-                           <a href="../frontend/customerjoin.html" id="join-link">Join</a>
-                      </div>
-
-
-                      <a href="../frontend/account.html" class="menu-item">
-                          <i class="fas fa-user"></i> My Account
-                      </a>
-                      <a href="#" class="menu-item">
-                          <i class="fas fa-calendar-alt"></i> My Orders
-                      </a>
-                      <a href="#" class="menu-item">
-                          <i class="fas fa-question-circle"></i> Returns Information
-                      </a>
-                      <a href="#" class="menu-item">
-                          <i class="fas fa-comment-dots"></i> Contact Preferences
-                      </a>
-                      
-                  </div>
-                  
-                </div>
-
-                <div class="dropdown">
-                  <div class="icon"><i class="fas fa-heart"></i></div>
-               
-                  <div class="dropdown-content">
-                     
-                      <a href="../frontend/wishlist.html" class="menu-item">
-                          <i class="fas fa-user"></i> Saved product
-                      </a>
-                      <a href="#" class="menu-item">
-                          <i class="fas fa-calendar-alt"></i> My Orders
-                      </a>
-                  
-                  </div>
-                  
-                </div>
-
-                <div class="dropdown">
-                  <div class="icon"><i class="fas fa-shopping-bag"></i></div>
-                  <div class="dropdown-content">
-                   
-                      <a href="../frontend/account.html" class="menu-item">
-                          <i class="fas fa-user"></i> My Account
-                      </a>
-                      <a href="#" class="menu-item">
-                          <i class="fas fa-calendar-alt"></i> My Orders
-                      </a>
-                      </div></div></div></div>
-          
-        <div class="back-to-top" onclick="scrollToTop()">
-            <i class="fas fa-chevron-up"></i>
+           checkLoginStatus();
+           });
+  </script>
+     
+   <div class="back-to-top" onclick="scrollToTop()">
+   <i class="fas fa-chevron-up"></i>
         </div>
     
         <script>
@@ -277,12 +178,9 @@
         </script>
 
 
-    <div class="promo-bar">
-       
-        <div class="delivery">ISLAND WIDE FREE DELIVERY</div>
-        
-    </div>
-   
+
+
+
 
 
     <div class="hero1">
@@ -319,83 +217,76 @@
         updateBackground();
     </script>
 
-
-
-<section class="change">
-
-<div class="carousel-container">
- 
-    <button class="arrow left-arrow" onclick="scrollCarousel(-1)">&#10094;</button>
-  
-    <div class="carousel">
-      <div class="carousel-item">
-        <a href="../frontend/product1.html" target="_blank">
-          <img src="../img/women/clothes/dress4.jpg" alt="img-1">
-        </a>
-        <div class="details">Image 1 - Description or Price</div>
+<div class="product-section">
+  <h2>New Arrivals</h2>
+  <div class="product-container">
+      <button class="scroll-btn left">&lt;</button> <!-- Left Scroll Button -->
+      <div class="product-list">
+          <div class="product-item">
+              <img src="../img/banner1.jpg" alt="Product 1">
+              <p>Stylish Jacket</p>
+              <span>$49.99</span>
+          </div>
+          <div class="product-item">
+              <img src="../img/banner1.jpg" alt="Product 2">
+              <p>Casual Sneakers</p>
+              <span>$39.99</span>
+          </div>
+          <div class="product-item">
+              <img src="../img/banner1.jpg" alt="Product 3">
+              <p>Elegant Dress</p>
+              <span>$59.99</span>
+          </div>
+          <div class="product-item">
+              <img src="../img/banner1.jpg" alt="Product 4">
+              <p>Denim Jeans</p>
+              <span>$44.99</span>
+          </div>
+          <div class="product-item">
+              <img src="../img/banner1.jpg" alt="Product 5">
+              <p>Summer T-Shirt</p>
+              <span>$19.99</span>
+          </div>
+          <div class="product-item">
+            <img src="../img/banner1.jpg" alt="Product 3">
+            <p>Elegant Dress</p>
+            <span>$59.99</span>
+        </div>
+        <div class="product-item">
+            <img src="../img/banner1.jpg" alt="Product 4">
+            <p>Denim Jeans</p>
+            <span>$44.99</span>
+        </div>
+        <div class="product-item">
+            <img src="../img/banner1.jpg" alt="Product 5">
+            <p>Summer T-Shirt</p>
+            <span>$19.99</span>
+        </div>
       </div>
-      <div class="carousel-item">
-        <a href="../frontend/product1.html" target="_blank">
-          <img src="../img/women/accssories/ac6.webp" alt="img-2">
-        </a>
-        <div class="details">Image 2 - Description or Price</div>
-      </div>
-      <div class="carousel-item">
-        <a href="../frontend/product1.html" target="_blank">
-          <img src="../img/women/clothes/d10.webp" alt="img-3">
-        </a>
-        <div class="details">Image 3 - Description or Price</div>
-      </div>
-      <div class="carousel-item">
-        <a href="../frontend/product1.html" target="_blank">
-          <img src="../img/men/clothes/cs19.jpg" alt="img-4">
-        </a>
-        <div class="details">Image 4 - Description or Price</div>
-      </div>
-      <div class="carousel-item">
-        <a href="../frontend/product1.html" target="_blank">
-          <img src="../img/men/clothes/t7.jpg" alt="img-5">
-        </a>
-        <div class="details">Image 5 - Description or Price</div>
-      </div>
-      <div class="carousel-item">
-        <a href="../frontend/product1.html" target="_blank">
-          <img src="../img/women/footwear/sh04.jpg" alt="img-6">
-        </a>
-        <div class="details">Image 6 - Description or Price</div>
-      </div>
-    </div>
-    <button class="arrow right-arrow" onclick="scrollCarousel(1)">&#10095;</button>
+      <button class="scroll-btn right">&gt;</button> <!-- Right Scroll Button -->
   </div>
-</section>
+</div>
+<script>document.addEventListener("DOMContentLoaded", function () {
+  const scrollContainer = document.querySelector(".product-list");
+  const leftBtn = document.querySelector(".scroll-btn.left");
+  const rightBtn = document.querySelector(".scroll-btn.right");
 
-  <script>
-    const carousel = document.querySelector('.carousel');
-    let scrollAmount = 0;
+  leftBtn.addEventListener("click", () => {
+      scrollContainer.scrollBy({ left: -200, behavior: "smooth" });
+  });
 
-    function scrollCarousel(direction) {
-      const itemWidth = document.querySelector('.carousel-item').offsetWidth;
-      const containerWidth = document.querySelector('.carousel-container').offsetWidth;
-      const maxScroll = carousel.scrollWidth - containerWidth;
+  rightBtn.addEventListener("click", () => {
+      scrollContainer.scrollBy({ left: 200, behavior: "smooth" });
+  });
+});
+</script>
 
-      scrollAmount += direction * itemWidth;
-
-      if (scrollAmount < 0) scrollAmount = 0;
-      if (scrollAmount > maxScroll) scrollAmount = maxScroll;
-
-      carousel.style.transform = `translateX(-${scrollAmount}px)`;
-    }
-  </script>
-   
    <div class="main-banner">
     <h1> 1000S OF STYLES IN NC </h1>
     <div class="code">With code: <span>25OFF</span></div>
     <div class="terms">Valid on selected products only .See website banner for full Ts&Cs.</div>
 </div>
  
-  
-
-
 <section id="nc-banner" class="section-p1">
     <div class="banner-box">
     <h4>crazy deals</h4>

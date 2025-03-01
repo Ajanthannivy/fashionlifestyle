@@ -84,6 +84,7 @@
         document.getElementById("modalTitle").innerText = cloth.name;
         document.getElementById("modalImage").src = cloth.image;
         document.getElementById("modalPrice").innerText = cloth.price;
+        document.getElementById("modalColor").innerText = cloth.color;
         
         const modal = document.getElementById("cartModal");
         modal.classList.add("show");
@@ -128,6 +129,7 @@ function buyNow() {
     const product = {
         name: document.getElementById("modalTitle").innerText,
         price: document.getElementById("modalPrice").innerText,
+        
         quantity: document.getElementById("quantity").value,
         size: document.getElementById("size").value
     };

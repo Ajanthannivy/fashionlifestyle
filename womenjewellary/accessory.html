@@ -9,6 +9,15 @@
    
 </head>
 <body>
+    <div id="header"></div>
+    <script>
+        fetch('../frontendwomen/womennav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading the header:', error));
+    </script>
 
 <h2>Womens Jewellary</h2>
 <div class="container" id="clothContainer"></div>

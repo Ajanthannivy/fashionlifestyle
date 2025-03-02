@@ -20,9 +20,44 @@
               <a href="../frontendwomen/women.html">WOMEN</a>
               <a href="../frontendmen/men.html">MEN</a>
           </div>
+      
        <div class="search-bar">
-        <input type="text" placeholder="Search for items and brands" />
-       </div>
+        <input type="text" id="search-box" placeholder="Search Women's Products" onkeyup="searchItems()">
+        <div id="search-results"></div>
+    </div>
+    
+       <script>function searchItems() {
+        let query = document.getElementById("search-box").value.trim();
+        let resultsDiv = document.getElementById("search-results");
+    
+        if (query.length < 2) { 
+            resultsDiv.innerHTML = ""; 
+            return; 
+        }
+    
+        fetch(`search.php?query=${query}`)
+            .then(response => response.json())
+            .then(data => {
+                resultsDiv.innerHTML = "";
+                if (data.length === 0) {
+                    resultsDiv.innerHTML = "<p>No results found</p>";
+                    return;
+                }
+    
+                let resultsHTML = "<ul>";
+                data.forEach(item => {
+                    resultsHTML += `<li>
+                        <img src="../img/${item.image}" width="50" height="50">
+                        <span>${item.product_name} - ${item.category} - ₹${item.price}</span>
+                    </li>`;
+                });
+                resultsHTML += "</ul>";
+    
+                resultsDiv.innerHTML = resultsHTML;
+            })
+            .catch(error => console.error("Error fetching search results:", error));
+    }
+    </script>
           
          <div class="navbar1">
               <div class="dropdown">
@@ -30,7 +65,8 @@
                   <div class="dropdown-content" id="user-dropdown">
                       <div class="close"><i class="fas fa-times"></i></div>
                       <div class="header" id="auth-section">
-                          <a href="login.php" id="login-link">Sign In</a> 
+                          <a href="../useraccount/login.php" id="login-link">Login</a> 
+                          <a href="../useraccount/register.php" id="login-link">Register</a>
                           
                       </div>
                       <a href="myaccount.php" class="menu-item"><i class="fas fa-user"></i> My Account</a>
@@ -47,7 +83,7 @@
               <div class="icon"><i class="fas fa-heart"></i></div>
               <div class="dropdown-content">
                   <div class="close"><i class="fas fa-times"></i></div>
-                  <a href="../frontend/wishlist.html" class="menu-item"><i class="fas fa-star"></i> Saved Products</a>
+                  <a href="../wishlist.html" class="menu-item"><i class="fas fa-star"></i> Saved Products</a>
                   <a href="#" class="menu-item"><i class="fas fa-calendar-alt"></i> My Orders</a>
               </div>              
           </div>
@@ -57,8 +93,8 @@
               <div class="icon"><i class="fas fa-shopping-bag"></i></div>
               <div class="dropdown-content">
                   <div class="close"><i class="fas fa-times"></i></div>
-                  <a href="../frontend/account.html" class="menu-item"><i class="fas fa-user"></i> My Account</a>
-                  <a href="#" class="menu-item"><i class="fas fa-calendar-alt"></i> My Orders</a>
+                  <a href="../mybag.html" class="menu-item"><i class="fas fa-user"></i> My Bags</a>
+                  <a href="../cart.html" class="menu-item"><i class="fas fa-calendar-alt"></i> My Orders</a>
               </div>
           </div>
         </div>

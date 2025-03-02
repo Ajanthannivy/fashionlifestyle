@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <style>
+       body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 40px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.form-section, .checkout-section {
+    flex: 1;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 8px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+textarea {
+    height: 80px;
+    resize: none;
+}
+
+button {
+    width: 100%;
+    background-color: palevioletred;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color:navy;
+}
+
+.checkout-section {
+    max-width: 350px;
+}
+
+#checkoutContainer {
+    margin-top: 10px;
+}
+
+.total {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 15px;
+    text-align: right;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #ddd;
+    margin: 15px 0;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 20px;
+    }
+    .checkout-section {
+        max-width: 100%;
+    }
+}
+
+    </style>
+</head>
+<body>
+  
+    <div class="container">
+        <div class="form-section">
+            <form id="checkoutForm">
+                <h2>BILLING DETAILS</h2>
+                <label>Name: <input type="text" id="name" required></label><br>
+                <label>Address: <textarea id="address" required></textarea></label><br>
+                
+                <h2>PAYMENT METHOD</h2>
+                <label>
+                    <select id="payment_mode">
+                        <option value="COD">Cash on Delivery</option>
+                        <option value="Card">Credit/Debit Card</option>
+                    </select>
+                </label><br>
+
+                <button type="button" onclick="handleCheckout()">Place Order</button>
+            </form>
+        </div>
+
+        <div class="checkout-section">
+            <h2>Order Summary</h2>
+            <div id="checkoutContainer"></div>
+            <hr/>
+            <p class="total">TOTAL: ₹<span id="checkoutTotal">0</span></p>
+        </div>
+    </div>
+
+    <script>
+        let stripe = Stripe("pk_test_51QprK4HspNUtSzZSj4kVoiyruYK66vOuxaAHjpIEaWdOrmMv7YhaUknLza3SY9A5xmycyLJQqQtrvA65nr3oCfpu005JCbQZCj");
+
+        function loadCheckout() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let container = document.getElementById('checkoutContainer');
+            let totalPrice = 0;
+
+            container.innerHTML = "";
+            if (cart.length === 0) {
+                container.innerHTML = "<p>Your cart is empty!</p>";
+                document.getElementById('checkoutTotal').innerText = "0";
+                return;
+            }
+
+            cart.forEach(item => {
+                totalPrice += item.price * item.quantity;
+                let itemDiv = document.createElement('div');
+                itemDiv.innerHTML = `<p><strong>${item.name}</strong> - ₹${item.price} x ${item.quantity}</p>`;
+                container.appendChild(itemDiv);
+            });
+
+            document.getElementById('checkoutTotal').innerText = totalPrice;
+        }
+
+
+
+        function handleCheckout() {
+    let name = document.getElementById('name').value;
+    let address = document.getElementById('address').value;
+    let paymentMode = document.getElementById('payment_mode').value;
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    if (!name || !address) {
+        alert("Please fill in all details.");
+        return;
+    }
+
+    if (paymentMode === "Card") {
+        // Call the server to create a Stripe checkout session
+        fetch("checkout.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ cart, name, address, paymentMode })
+        })
+        .then(response => response.json())
+        .then(session => {
+            // Redirect to Stripe Checkout page using the session ID
+            return stripe.redirectToCheckout({ sessionId: session.id });
+        })
+        .then(result => {
+            if (result.error) {
+                alert(result.error.message);
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+    } else {
+        // For COD, clear the cart and redirect to success page
+        localStorage.removeItem('cart');
+        window.location.href = "order-success.html";
+    }
+}
+
+
+
+        loadCheckout();
+    </script>
+
+</body>
+</html>

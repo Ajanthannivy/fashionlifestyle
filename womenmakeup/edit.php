@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<h2>Edit Grooming</h2>
+<h2>Edit Makeup</h2>
 
 <?php
 $id = $_GET['id'];  

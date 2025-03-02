@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Failed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            color: red;
+        }
+    </style>
+</head>
+<div id="header"></div>
+<script>
+    fetch('../frontendwomen/womennav.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading the header:', error));
+</script>
+<body>
+    <h1>❌ Payment Failed</h1>
+    <p>Something went wrong. Please try again.</p>
+    <a href="checkout.html">Retry Payment</a>
+</body>
+</html>

@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <title>Women's Makeup</title>
     <link rel="stylesheet" href="../css/cart.css">
-   
 </head>
 <body>
     <div id="header"></div>
     <script>
-         fetch('../frontendwomen/womennav.html')
+        fetch('../frontendwomen/womennav.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header').innerHTML = data;
@@ -20,207 +19,73 @@
             .catch(error => console.error('Error loading the header:', error));
     </script>
 
+    <h2>Women's Makeup</h2>
+    <div class="container" id="clothContainer"></div>
 
-<h2>Women's Makeup</h2>
-<div class="container" id="clothContainer"></div>
-
-<!-- Popup Modal -->
-<div id="cartModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-
+    <script>
+        
       
-        <div class="modal-body">
-           
-            <div class="modal-left">
-                <img id="modalImage" class="modal-img">
-            </div>
 
-           
-            <div class="modal-right">
-                <h2 id="modalTitle"></h2>
-                <p><strong>Price:</strong> ₹<span id="modalPrice"></span></p>
-                <p><strong>Color:</strong> <span id="modalColor"></span></p>
-                
-               
-                <label for="size"><strong>Size:</strong></label>
-                <select id="size" class="size-dropdown">
-                    <option>Please select</option>
-                    <option>Small</option>
-                    <option>Medium</option>
-                    <option>Large</option>
-                    <option>XL</option>
-                </select>
-               
-                
-                <label for="quantity"><strong>Quantity:</strong></label>
-<input type="number" id="quantity" min="1" value="1" class="quantity-input" oninput="checkStock()">
-<p id="stock-message" style="color: red; display: none;">Sorry, insufficient stock available!</p>
-
-
-
-
-                <a href="#" class="size-guide">Size Guide</a>
-
-            
-        <button class="fas fa-shopping-cart" onclick="addToCart()"> Add To Cart</button>
-        <button class="far fa-heart wishlist" onclick="addToWishlist()"></button>
-
-                
-                <div class="delivery-info">
-                    <p>🚚 Free delivery on qualifying orders.</p>
-                    <a href="#">View our Delivery & Returns Policy</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    
-    let wishlist = [];
-
-    function openCartModal(cloth) {
-        document.getElementById("modalTitle").innerText = cloth.name;
-        document.getElementById("modalImage").src = cloth.image;
-        document.getElementById("modalPrice").innerText = cloth.price;
-        document.getElementById("modalColor").innerText = cloth.color;
-        
-        const modal = document.getElementById("cartModal");
-        modal.classList.add("show");
-        modal.style.display = "flex";
-    }
-
-
-    function closeModal() {
-        const modal = document.getElementById("cartModal");
-        modal.classList.remove("show");
-        setTimeout(() => { modal.style.display = "none"; }, 300);
-    }
-    window.onclick = function(event) {
-        if (event.target == document.getElementById("cartModal")) {
-            closeModal();
-        }
-    }
-
-
-    
-
-
-    
-    function addToWishlist(clothId) {
-    let btn = document.querySelector(`.wishlist-btn[data-id="${clothId}"]`);
-    if (!wishlist.includes(clothId)) {
-        wishlist.push(clothId);
-        btn.innerHTML = `<i class="far fa-heart wishlist"></i>`; 
-        btn.style.color = "red";
-        alert("Added to Wishlist!");
-    } else {
-        wishlist = wishlist.filter(id => id !== clothId);
-        btn.innerHTML = `<i class="fa-regular fa-heart"></i>`; 
-        btn.style.color = "black";
-        alert("Removed from Wishlist!");
-    }
-    window.location.href = "../frontend/whistlist.html";
-}
-
-function buyNow() {
-    // Storing selected product data in localStorage
-    const product = {
-        name: document.getElementById("modalTitle").innerText,
-        price: document.getElementById("modalPrice").innerText,
-        
-        quantity: document.getElementById("quantity").value,
-        size: document.getElementById("size").value
-    };
-    
-    localStorage.setItem("selectedProduct", JSON.stringify(product)); 
-
-    // Redirecting to checkout page
-    window.location.href = "./checkout.php";
-}
-
-     
-window.onload = function() {
-    // Retrieve the product data from localStorage
-    const product = JSON.parse(localStorage.getItem("selectedProduct"));
-    
-    if (product) {
-        // Display product details on the checkout page
-        document.getElementById("productName").innerText = product.name;
-        document.getElementById("productPrice").innerText = product.price;
-        document.getElementById("productQuantity").innerText = product.quantity;
-        document.getElementById("productSize").innerText = product.size;
-    } else {
-        alert("No product selected");
-    }
-};
-
-const availableStock = 3; // Change this to your actual stock value
-
-  function checkStock() {
-    const quantity = document.getElementById("quantity").value;
-    const stockMessage = document.getElementById("stock-message");
-
-    if (quantity > availableStock) {
-      stockMessage.style.display = "block";
-    } else {
-      stockMessage.style.display = "none";
-    }
-  }
-
-
-   
-    // Fetching Data from PHP
-    fetch('fetch.php')
-    .then(response => response.json())
-    .then(data => {
-        let container = document.getElementById('clothContainer');
-        let categories = {};
-
-        data.forEach(cloth => {
-            if (!categories[cloth.category]) {
-                categories[cloth.category] = [];
-            }
-            categories[cloth.category].push(cloth);
-        });
-
-        for (let category in categories) {
-            let categoryDiv = document.createElement('div');
-            categoryDiv.className = 'category';
-            categoryDiv.innerHTML = `<strong>${category}</strong>`;
-            container.appendChild(categoryDiv);
-
-            categories[category].forEach(cloth => {
-                let clothCard = document.createElement('div');
-                clothCard.className = 'cloth-card';
-                clothCard.innerHTML = `
-                    <img src="${cloth.image}" alt="${cloth.name}">
-                    <p><strong>${cloth.name}</strong></p>
-                    <p>Price: ₹${cloth.price}</p>
-                    <p>Color: ${cloth.color}</p>
-
-                    <div class="action-icons">
-                        <button class="wishlist-btn" onclick="addToWishlist(${cloth.id})">
-            <i class="far fa-heart wishlist"></i> 
-        </button>
-    
-        
-        <button class="cart-btn" onclick='openCartModal(${JSON.stringify(cloth)})'>
-            <i class="fas fa-shopping-cart"></i> 
-        </button>
-                    </div>
-                `;
-                container.appendChild(clothCard);
-            });
-        }
+        function addToWishlist(productId) {
+    fetch('../cartsystem/add_to_wishlist.php', { // Correct PHP file
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `product_id=${productId}`
     })
-    .catch(error => console.error('Error fetching clothes:', error));
-</script>
+    .then(response => response.text())
+    .then(message => {
+        alert(message); // Success or failure message
+        window.location.href = "../cartsystem/wishlist.html"; // Redirect to Wishlist page
+    })
+    .catch(error => console.error('Error adding to wishlist:', error));
+}
 
+
+
+
+
+        // Fetching Data from PHP
+        fetch('fetch.php')
+        .then(response => response.json())
+        .then(data => {
+            let container = document.getElementById('clothContainer');
+            let categories = {};
+
+            data.forEach(cloth => {
+                if (!categories[cloth.category]) {
+                    categories[cloth.category] = [];
+                }
+                categories[cloth.category].push(cloth);
+            });
+
+            for (let category in categories) {
+                let categoryDiv = document.createElement('div');
+                categoryDiv.className = 'category';
+                categoryDiv.innerHTML = `<strong>${category}</strong>`;
+                container.appendChild(categoryDiv);
+
+                categories[category].forEach(cloth => {
+                    let clothCard = document.createElement('div');
+                    clothCard.className = 'cloth-card';
+                    clothCard.innerHTML = `
+                        <img src="${cloth.image}" alt="${cloth.name}">
+                        <p><strong>${cloth.name}</strong></p>
+                        <p>Price: ₹${cloth.price}</p>
+                        <p>Color: ${cloth.color}</p>
+                        <div class="action-icons">
+                            <button class="wishlist-btn" onclick="addToWishlist(${cloth.id})">
+                                <i class="far fa-heart "></i> 
+                            </button>
+                     </div>
+                    `;
+                    container.appendChild(clothCard);
+                });
+            }
+        })
+        .catch(error => console.error('Error fetching clothes:', error));
+    </script>
 </body>
 </html>
 
-    
 
-    
+

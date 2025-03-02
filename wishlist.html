@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>My Wishlist</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+            color: #444;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 0 15px;
+        }
+
+        .cloth-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+            width: 230px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cloth-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        .cloth-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .cloth-card p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        button {
+            padding: 8px 15px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .remove-btn {
+            background-color: palevioletred;
+            color: white;
+        }
+
+        .remove-btn:hover {
+            background-color: navy;
+        }
+
+        .move-btn {
+            background-color: navy;
+            color: white;
+        }
+
+        .move-btn:hover {
+            background-color: palevioletred;
+        }
+
+        /* Popup Styling */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            z-index: 1000;
+            width: 250px;
+        }
+
+        .popup-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .bag-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .cloth-card {
+                width: 180px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+    <script>
+        fetch('/frontendwomen/womennav.html')
+       
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading the header:', error));
+    </script>
+
+    <h2>My Wishlist</h2>
+    <div class="container" id="wishlistContainer"></div>
+
+    <!-- Popup Container -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <img src="../images/bag-icon.png" alt="Bag Icon" class="bag-icon">
+            <p>Item moved to Bag!</p>
+        </div>
+    </div>
+
+    <script>
+        function loadWishlist() {
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            let container = document.getElementById('wishlistContainer');
+
+            container.innerHTML = ""; // Clear previous data
+
+            if (wishlist.length === 0) {
+                container.innerHTML = "<p>No items in Wishlist</p>";
+                return;
+            }
+
+            wishlist.forEach(cloth => {
+                let clothCard = document.createElement('div');
+                clothCard.className = 'cloth-card';
+                clothCard.innerHTML = `
+                    <img src="/uplods/${cloth.image}" alt="${cloth.name}">
+                    <p><strong>${cloth.name}</strong></p>
+                    <p>Price: ₹${cloth.price}</p>
+                    <p>Color: ${cloth.color}</p>
+
+                    <div class="action-buttons">
+                        <button class="remove-btn" onclick="removeFromWishlist(${cloth.id})">Remove</button>
+                        <button class="move-btn" onclick="moveToBag(${cloth.id})">Move to Bag</button>
+                    </div>
+                `;
+                container.appendChild(clothCard);
+            });
+        }
+
+        function removeFromWishlist(id) {
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            wishlist = wishlist.filter(item => item.id !== id);
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            loadWishlist(); // Refresh the wishlist page
+        }
+
+        function moveToBag(id) {
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            let item = wishlist.find(item => item.id === id);
+            if (item) {
+                cart.push(item); // Add to cart
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                // Remove from wishlist
+                removeFromWishlist(id);
+
+                showPopup(); // Show popup when item is moved to bag
+            }
+        }
+
+        function showPopup() {
+            let popup = document.getElementById('popup');
+            popup.style.display = 'block';
+
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000); // Hide after 2 seconds
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        loadWishlist(); // Load wishlist on page load
+    </script>
+
+</body>
+</html>

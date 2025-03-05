@@ -1,63 +1,90 @@
 <?php
-require 'vendor/autoload.php';
+include('db.php');
+session_start();
+require 'vendor/autoload.php'; // Stripe Library Include
 
-$host = "localhost";
-$user = "root";
-$password = "";
-$database = "fashiondress";
-
-$conn = new mysqli($host, $user, $password, $database);
-
-if ($conn->connect_error) {
-    die("Database Connection Failed: " . $conn->connect_error);
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
 }
 
-\Stripe\Stripe::setApiKey('sk_test_51QprK4HspNUtSzZSeLu1fLRzetLUk8I7uotk2Xlge9cuAuuSAEZxNkTnoKh1RcvTjHm6H7zrwX425g9sknQuzLwr00aG7tSPiM');
+$user_id = $_SESSION['user_id'];
+$payment_mode = $_POST['payment_mode']; // COD or Card
+$address = $_POST['address']; // Address from form
 
-$data = json_decode(file_get_contents('php://input'), true);
-$cart = $data['cart'];
-$name = $data['name'];
-$address = $data['address'];
-$paymentMode = $data['paymentMode'];
+// Fetch cart items
+$cart_items = $conn->query("SELECT cart.*, products.name, products.price 
+                            FROM cart 
+                            JOIN products ON cart.product_id = products.id 
+                            WHERE cart.user_id = '$user_id'");
 
-$totalAmount = 0;
-foreach ($cart as $item) {
-    $totalAmount += $item['price'] * $item['quantity'];
-}
+$total_amount = 0;
+$order_success = true;
+$order_items = []; // For Stripe Payment
 
-// Create Stripe Checkout Session for Card Payment
-if ($paymentMode === "Card") {
-    $line_items = [];
-    foreach ($cart as $item) {
-        $line_items[] = [
-            'price_data' => [
-                'currency' => 'inr',
-                'product_data' => ['name' => $item['name']],
-                'unit_amount' => $item['price'] * 100, // Stripe requires amount in cents
-            ],
-            'quantity' => $item['quantity'],
-        ];
-    }
+while ($row = $cart_items->fetch_assoc()) {
+    $product_id = $row['product_id'];
+    $quantity = $row['quantity'];
+    $price = $row['price'];
+    $total_price = $quantity * $price;
+    $total_amount += $total_price;
 
-    $checkout_session = \Stripe\Checkout\Session::create([
-        'payment_method_types' => ['card'],
-        'line_items' => $line_items,
-        'mode' => 'payment',
-        'success_url' => 'http://yourwebsite.com/payment-success.php?session_id={CHECKOUT_SESSION_ID}',
-        'cancel_url' => 'http://yourwebsite.com/order-failed.html',
-    ]);
-
-    // Return the session ID to the client-side to redirect to Stripe
-    echo json_encode(['id' => $checkout_session->id]);
-} else {
-    // Handle COD orders - save to database, clear cart and redirect to success page
-    $query = "INSERT INTO orders (name, address, payment_mode, total_amount, order_status) 
-              VALUES (?, ?, ?, ?, 'Pending')";
+    // Save order in database
+    $query = "INSERT INTO orders (user_id, product_id, quantity, total_price, payment_mode, order_status, address) 
+              VALUES (?, ?, ?, ?, ?, 'pending', ?)";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("sssd", $name, $address, $paymentMode, $totalAmount);
-    $stmt->execute();
+    $stmt->bind_param("iiidss", $user_id, $product_id, $quantity, $total_price, $payment_mode, $address);
+
+    if (!$stmt->execute()) {
+        $order_success = false;
+    }
     $stmt->close();
-    
-    // Clear cart and redirect to success page
-    echo json_encode(['status' => 'success']);
+
+    // Prepare items for Stripe Payment
+    $order_items[] = [
+        'name' => $row['name'],
+        'price' => $price,
+        'quantity' => $quantity
+    ];
 }
+
+// If all orders inserted successfully
+if ($order_success) {
+    if ($payment_mode === "COD") {
+        // Cash on Delivery - Clear cart and redirect to success page
+        $conn->query("DELETE FROM cart WHERE user_id = '$user_id'");
+        header("Location: cart.php?message=Order Placed Successfully!");
+        exit();
+    } else {
+        // Stripe Payment Process
+        \Stripe\Stripe::setApiKey('sk_test_51QprK4HspNUtSzZSeLu1fLRzetLUk8I7uotk2Xlge9cuAuuSAEZxNkTnoKh1RcvTjHm6H7zrwX425g9sknQuzLwr00aG7tSPiM');
+
+        $line_items = [];
+        foreach ($order_items as $item) {
+            $line_items[] = [
+                'price_data' => [
+                    'currency' => 'inr',
+                    'product_data' => ['name' => $item['name']],
+                    'unit_amount' => $item['price'] * 100, // Stripe requires amount in cents
+                ],
+                'quantity' => $item['quantity'],
+            ];
+        }
+
+        $checkout_session = \Stripe\Checkout\Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => $line_items,
+            'mode' => 'payment',
+            'success_url' => 'http://yourwebsite.com/payment-success.php?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url' => 'http://yourwebsite.com/order-failed.html',
+        ]);
+
+        // Return the session ID to the client-side to redirect to Stripe
+        echo json_encode(['id' => $checkout_session->id]);
+        exit();
+    }
+} else {
+    header("Location: cart.php?message=Order Failed!");
+    exit();
+}
+?>
